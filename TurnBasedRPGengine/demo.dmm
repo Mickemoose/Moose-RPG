@@ -1,0 +1,35 @@
+"a" = (/turf/sky,/area)
+"b" = (/turf/grassedge,/area)
+"c" = (/SPAWNS/Party_Slot3,/turf/grass,/area)
+"d" = (/turf/grass,/area)
+"e" = (/SPAWNS/Enemy,/turf/grass,/area)
+"f" = (/SPAWNS/Party_Slot1,/turf/grass,/area)
+"g" = (/SPAWNS/Party_Slot2,/turf/grass,/area)
+"h" = (/SPAWNS/Party_Slot4,/turf/grass,/area)
+"i" = (/turf,/area)
+
+(1,1,1) = {"
+aaaaaaaaaa
+aaaaaaaaaa
+aaaaaaaaaa
+bbbbbbbbbb
+cddddddded
+dfdddddddd
+dddddddded
+dgdddddddd
+hddddddded
+dddddddddd
+"}
+
+(1,1,2) = {"
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+iiiiiiiiii
+"}

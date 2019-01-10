@@ -1,0 +1,70 @@
+// DM Environment file for TurnBasedRPGengine.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+// END_FILE_DIR
+
+// BEGIN_PREFERENCES
+// END_PREFERENCES
+
+// BEGIN_INCLUDE
+#include <darkcampainger\getflaticon\Get Flat Icon\Get Flat Icon.dme>
+#include "Dev Tree.dm"
+#include "SavingLoading.dm"
+#include "TurnBasedRPGengine.dm"
+#include "What Im working on atm.dm"
+#include "Whats New.dm"
+#include "WorldMusic.dm"
+#include "OVERWORLD.dmm"
+#include "BattleSystem\Ailments.dm"
+#include "BattleSystem\Arenas.dm"
+#include "BattleSystem\Buttons.dm"
+#include "BattleSystem\Cast.dm"
+#include "BattleSystem\GameOver.dm"
+#include "BattleSystem\Initialize.dm"
+#include "BattleSystem\Materia.dm"
+#include "BattleSystem\PVP_Ending.dm"
+#include "BattleSystem\PVP_Initialize.dm"
+#include "BattleSystem\Ready.dm"
+#include "BattleSystem\Backgrounds\Backgrounds.dm"
+#include "BattleSystem\Skills\HoOh\Skill.dm"
+#include "BattleSystem\Skills\Lugia\Skill.dm"
+#include "Characters\PartyMembers.dm"
+#include "Chat\Chat.dm"
+#include "Chat\maptext.dm"
+#include "Chat\Menu.dm"
+#include "Chat\Questions.dm"
+#include "Chat\Talk.dm"
+#include "Chat\SKIN.dmf"
+#include "Chat\Menu\Menu.dm"
+#include "demo\mapfade.dm"
+#include "demo\turf.dm"
+#include "Enemies\Drops.dm"
+#include "Enemies\E-Skills.dm"
+#include "Enemies\Enemies.dm"
+#include "Enemies\nametags.dm"
+#include "Enemies\Regions.dm"
+#include "Eyes\EyeStyles.dm"
+#include "Hair\Hairstyles.dm"
+#include "Items\Craftables.dm"
+#include "Items\Effects.dm"
+#include "Items\Equipment.dm"
+#include "Items\Inventory.dm"
+#include "Items\Items.dm"
+#include "Items\Materials.dm"
+#include "NewTurfs\HouseTurfs.dm"
+#include "Overworld\Destinations.dm"
+#include "Overworld\Itens.dm"
+#include "Overworld\Turf.dm"
+#include "Overworld\Houses\HouseTiles.dm"
+#include "Overworld\Houses\Furnish\System.dm"
+#include "Party\Partys.dm"
+#include "Party\Spawns.dm"
+#include "weatherntime\TimeSystem.dm"
+// END_INCLUDE
+

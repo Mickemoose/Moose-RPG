@@ -1,0 +1,31 @@
+SPAWNS
+	parent_type=/obj
+	icon='Party/Spawns.dmi'
+	icon_state="E"
+	invisibility=101
+	density=0
+	var/taken=0
+	Party_Slot1
+		icon_state="P1"
+	Party_Slot2
+		icon_state="P2"
+	Party_Slot3
+		icon_state="P3"
+	Party_Slot4
+		icon_state="P4"
+	Enemy
+		icon_state="E"
+	Enemy2
+		icon_state="E"
+	Enemy3
+		icon_state="E"
+	Boss
+		icon_state="BOSS"
+	Camera
+		icon_state="CAM"
+
+	PVP_P1
+		icon_state="P1"
+	PVP_P2
+		icon_state="P2"
+

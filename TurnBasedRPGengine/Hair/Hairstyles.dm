@@ -1,0 +1,16 @@
+obj
+	HAIR
+		layer=8
+		Brendan
+			icon='Hair/Brendan.dmi'
+		Derek
+			icon='Hair/Derek.dmi'
+		Becca
+			icon='Hair/Becca.dmi'
+		BeccaPony
+			icon='Hair/BeccaPony.dmi'
+			layer=4
+		Hunter
+			icon='Hair/Hunter.dmi'
+		Laundry
+			icon='Hair/Laundry.dmi'

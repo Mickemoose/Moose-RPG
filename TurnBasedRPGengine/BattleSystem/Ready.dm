@@ -1,0 +1,24 @@
+obj
+	ARROW
+		density=0
+		icon='Characters/Arrow.dmi'
+		layer=998
+		pixel_x=32
+		pixel_y=68
+	EARROW
+		density=0
+		icon='Characters/EArrow.dmi'
+		layer=998
+		pixel_x=16
+		pixel_y=32
+	CIRCLE
+		density=0
+		icon='BattleSystem/ReadyCircle.dmi'
+		icon_state="P1"
+		layer=MOB_LAYER-1
+		pixel_x=0
+		pixel_y=0
+
+turf
+	BATTLE_TEXT
+		icon='BattleSystem/Text.dmi'

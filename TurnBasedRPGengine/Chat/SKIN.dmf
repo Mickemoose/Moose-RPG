@@ -2424,6 +2424,59 @@ window "PARTY_ITEMUSE"
 		saved-params = ""
 		text = ""
 
+window "TIME"
+	elem "TIME"
+		type = MAIN
+		pos = 281,0
+		size = 167x74
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		image = 'Chat\\Time.dmi'
+	elem "CLOCK"
+		type = LABEL
+		pos = 33,40
+		size = 99x20
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+	elem "DAYNUM"
+		type = LABEL
+		pos = 135,10
+		size = 21x20
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+	elem "MONTH"
+		type = LABEL
+		pos = 72,10
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+	elem "DAY"
+		type = LABEL
+		pos = 9,10
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		saved-params = ""
+		text = ""
+
 window "default"
 	elem "default"
 		type = MAIN
@@ -2446,6 +2499,17 @@ window "default"
 		saved-params = "icon-size"
 		icon-size = 32
 		zoom = 1
+	elem "TIME"
+		type = CHILD
+		pos = 535,25
+		size = 167x74
+		anchor1 = none
+		anchor2 = none
+		background-color = #ff2424
+		is-visible = false
+		saved-params = "splitter"
+		right = "TIME"
+		is-vert = false
 	elem "MENU"
 		type = CHILD
 		pos = 24,24

@@ -23,6 +23,13 @@ mob
 						for(var/ENEMY/E in src.Battlers)
 							Target_List.Remove(E)
 							Battlers.Remove(E)
+							for(var/obj/ENEMY_BAR/E2 in world)
+								if(E2.owner==src)
+									for(var/obj/ENEMY_BAR_UNDER/U in world)
+										if(U.owner==E2)
+											del(U)
+									del(E2)
+
 							del(E)
 						for(var/SPAWNS/Enemy/E1 in A.contents)
 							E1.taken=0
@@ -93,6 +100,12 @@ mob
 						for(var/ENEMY/E in src.Battlers)
 							Target_List.Remove(E)
 							Battlers.Remove(E)
+							for(var/obj/ENEMY_BAR/E2 in world)
+								if(E2.owner==src)
+									for(var/obj/ENEMY_BAR_UNDER/U in world)
+										if(U.owner==E2)
+											del(U)
+									del(E2)
 							del(E)
 						for(var/SPAWNS/Enemy/E1 in A.contents)
 							E1.taken=0

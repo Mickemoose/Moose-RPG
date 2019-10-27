@@ -39,9 +39,7 @@ REGIONS
 		New()
 			..()
 			Region01.Remove(Region01)
-			Region01.Add(new /ENEMY/BOO, new /ENEMY/BOO, new /ENEMY/BOO, new /ENEMY/SQUID, new /ENEMY/SQUID, new /ENEMY/SQUID,
-		 new /ENEMY/GAMMA, new /ENEMY/GAMMA, new /ENEMY/SAIBAMEN, new /ENEMY/SAIBAMEN,
-		  new /ENEMY/MANKEY, new /ENEMY/MANKEY, new /ENEMY/MANKEY, new /ENEMY/METOOL, new /ENEMY/METOOL, new /ENEMY/METOOL, new /ENEMY/SLIME)
+			Region01.Add("BOO","MANKEY","GAMMA","SLIME","METOOL","SAIBAMEN","SQUID")
 
 var
 	list/

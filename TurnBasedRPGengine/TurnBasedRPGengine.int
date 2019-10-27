@@ -1,19 +1,19 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1572204266
+LAST_COMPILE_TIME: 1572212179
 PACKAGE_RSC_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_rsc.zip
-DIR: BattleSystem BattleSystem\Skills BattleSystem\Skills\HoOh BattleSystem\Skills\Lugia Characters Characters\Derek\Equipment Chat demo Enemies Enemies\Bosses Equipment\Sets\Boo Equipment\Sets\HoOh Overworld\Enemies Overworld\Houses Overworld\Houses\Furnish 
+DIR: BattleSystem BattleSystem\Skills\HoOh Characters\Derek\Equipment Chat Enemies Equipment\Sets\Boo Equipment\Sets\HoOh Overworld\Enemies Overworld\Houses Overworld\Houses\Furnish 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_src.zip
 LAST_COMPILE_VERSION: 512.1488
-PACKAGE_DME_START: 
 PACKAGE_TYPE: 0
+PACKAGE_DME_START: 
 PACKAGE_DME_INFO: 
-WINDOW: Enemies\E-Skills.dm;BattleSystem\Skills\Lugia\Skill.dm;Enemies\Enemies.dm;demo\mapfade.dm;BattleSystem\Skills\HoOh\FX.dmi;BattleSystem\Skills\HoOh\Skill.dm;WorldMusic.dm;Characters\PartyMembers.dm;Chat\SKIN.dmf;Chat\Buttons.dmi;BattleSystem\Buttons.dmi;Chat\Menu.dm;BattleSystem\Buttons.dm;BattleSystem\Initialize.dm;BattleSystem\GameOver.dm;Whats New.dm
-FILE: BattleSystem\Buttons.dm
+WINDOW: BattleSystem\Buttons.dm;Enemies\Enemies.dm;BattleSystem\miniBar.dmi;BattleSystem\GameOver.dm;BattleSystem\Initialize.dm;TurnBasedRPGengine.dm;BattleSystem\bossBar.dmi;Enemies\Regions.dm;Chat\Questions.dm
+FILE: TurnBasedRPGengine.dm
 PACKAGE_DME_DEMO: 
 PACKAGE_DMB_NAME: C:\Users\DerekMY\Desktop\WolfPackRPGSandbox.zip
 */

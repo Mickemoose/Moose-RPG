@@ -1,3 +1,4 @@
 obj
 	MenuBox
+	TimeBox
 

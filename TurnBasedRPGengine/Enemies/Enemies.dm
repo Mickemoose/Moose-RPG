@@ -3,10 +3,51 @@ obj
 		layer=998
 		New()
 			initiate_maptext(src, 32,156,578, 60)
+	ENEMY_BAR_UNDER
+		layer=996
+		invisibility=4
+		pixel_y=-8
+		icon='BattleSystem/miniBar.dmi'
+		var
+			owner=null
+		New(var/obj/ENEMY_BAR/B)
+			owner=B
+
+	ENEMY_BAR
+		layer=997
+		invisibility=4
+		pixel_y=-8
+		icon='BattleSystem/miniBar.dmi'
+		icon_state="bar"
+		var
+			owner = null
+		New(var/ENEMY/E)
+			var/obj/ENEMY_BAR_UNDER/U=new /obj/ENEMY_BAR_UNDER(src)
+			src.loc=E.loc
+			U.loc=src.loc
+			owner=E
+		proc
+			Update()
+				for(var/ENEMY/E in world)
+					if(owner==E)
+						var/size = E.HEALTH/E.MAX_HEALTH
+						if(E.HEALTH<=0)
+							for(var/obj/ENEMY_BAR_UNDER/U in world)
+								if(U.owner==src)
+									del(U)
+									del(src)
+						var/matrix/M = new
+						var/const/width = 64    // width of icon
+						M.Translate(width/2,0)    // shift 50px right, so the left of the icon is now where its center used to be
+						M.Scale(size,1)           // scale
+						M.Translate(-width/2,0)   // shift it back
+						animate(src,transform = M,time=1)
+
 ENEMY
 	parent_type = /mob
 	var
 		HEALTH = -3
+		MAX_HEALTH=0
 		EXP_GAIN = 15
 		GOLD_GAIN = 0
 		STRENGTH = 10
@@ -29,8 +70,11 @@ ENEMY
 		list/
 			E_Skills = list()
 			Drops = list()
-
 	proc
+		BarUpdate()
+			for(var/obj/ENEMY_BAR/E in world)
+				if(E.owner==src)
+					E.Update()
 		Active()
 			if(name=="pbag")
 				return
@@ -152,6 +196,7 @@ ENEMY
 								if(WEAK_TO == "BOLT")
 									damage=damage*2
 								HEALTH-=damage
+								BarUpdate()
 								new/effect/damage(src.loc,"<font color=red><b>[round(damage)]</b></font>")
 								if(HEALTH<=0)
 									spawn(2.5)
@@ -246,6 +291,7 @@ ENEMY
 										if(name=="Metool"&&!skilling &&can_skill&&!IMMUNE_TO_PHYS)
 											var/E_SKILL/ES=pick(E_Skills)
 											ES.Activate(src)
+									BarUpdate()
 									P.attacking=0
 									P.clicked=0
 									src.attacking=0
@@ -339,6 +385,7 @@ ENEMY
 										if(name=="Metool"&&!skilling &&can_skill&&!IMMUNE_TO_PHYS)
 											var/E_SKILL/ES=pick(E_Skills)
 											ES.Activate(src)
+									BarUpdate()
 									P.attacking=0
 									P.clicked=0
 									src.attacking=0
@@ -364,6 +411,7 @@ ENEMY
 		name="Ninja Squid"
 		icon='Enemies/NinjaSquid.dmi'
 		HEALTH = 45
+		MAX_HEALTH = 45
 		EXP_GAIN = 16
 		STRENGTH = 5
 		DEFENSE = 1
@@ -373,6 +421,7 @@ ENEMY
 		icon='Enemies/Boo.dmi'
 		icon_state="BOO"
 		HEALTH = 45
+		MAX_HEALTH = 45
 		EXP_GAIN = 16
 		STRENGTH = 6
 		DEFENSE = 2
@@ -387,6 +436,7 @@ ENEMY
 		icon='Enemies/Metool.dmi'
 		icon_state="METOOL"
 		HEALTH = 45
+		MAX_HEALTH = 45
 		EXP_GAIN = 16
 		STRENGTH = 4
 		DEFENSE = 2
@@ -398,6 +448,7 @@ ENEMY
 		icon='Enemies/Baddies64.dmi'
 		icon_state="pbag"
 		HEALTH = 100
+		MAX_HEALTH = 100
 		EXP_GAIN = 1
 		STRENGTH = 1
 		DEFENSE = 1
@@ -407,6 +458,7 @@ ENEMY
 		icon='Enemies/Saibamen.dmi'
 		icon_state="SAIBAMEN"
 		HEALTH = 55
+		MAX_HEALTH = 55
 		EXP_GAIN = 16
 		STRENGTH = 6
 		DEFENSE = 2
@@ -419,6 +471,7 @@ ENEMY
 		icon='Enemies/Baddies64.dmi'
 		icon_state="GAMMA"
 		HEALTH = 55
+		MAX_HEALTH = 55
 		EXP_GAIN = 25
 		STRENGTH = 4
 		DEFENSE = 2
@@ -430,6 +483,7 @@ ENEMY
 		icon='Enemies/Baddies64.dmi'
 		icon_state="MANKEY"
 		HEALTH = 55
+		MAX_HEALTH = 55
 		EXP_GAIN = 45
 		STRENGTH = 6
 		DEFENSE = 2
@@ -440,6 +494,7 @@ ENEMY
 		icon='Enemies/Baddies1.dmi'
 		icon_state="SLIME"
 		HEALTH = 30
+		MAX_HEALTH = 30
 		EXP_GAIN = 32
 		STRENGTH = 6
 		DEFENSE = 0
@@ -455,6 +510,7 @@ ENEMY
 			name="Groudon"
 			icon='Enemies/Bosses/Groudon.dmi'
 			HEALTH=150
+			MAX_HEALTH = 150
 			EXP_GAIN=240
 			STRENGTH=15
 			DEFENSE=8
@@ -464,6 +520,7 @@ ENEMY
 			icon='BattleSystem/Skills/HoOh/HoOh.dmi'
 			dir=WEST
 			HEALTH=200
+			MAX_HEALTH = 200
 			EXP_GAIN=250
 			STRENGTH=16
 			DEFENSE=10
@@ -497,6 +554,9 @@ ENEMY
 				spawn(5)
 					killer.BattleEnd()
 			spawn(10)
+				for(var/obj/ENEMY_BAR/E in world)
+					if(E.owner==src)
+						del(E)
 				del(src)
 		Miss()
 			if(!attacking&&!dead)

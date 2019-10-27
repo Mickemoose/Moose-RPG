@@ -72,6 +72,7 @@ mob
 	step_size = 8
 	Login()
 	//	Load()
+	//	src.see_invisible=4
 		src<<realm
 		new/CHAT/LINE_1(client)
 		new/CHAT/LINE_2(client)

@@ -223,6 +223,7 @@ mob
 				//	usr.UpdateInv()
 				//	usr<<sound('select.wav')
 					winset(usr,"default.MENU","is-visible=true")
+					winset(usr,"default.TIME","is-visible=true")
 				//	winset(usr,"default.BUTTONS","is-visible=false")
 					PartyCheck2()
 					EquipUpdate()
@@ -231,6 +232,7 @@ mob
 					usr<<menubutton
 					IN_MENU=0
 					winset(usr,"default.MENU","is-visible=false")
+					winset(usr,"default.TIME","is-visible=false")
 				//	winset(usr,"default.BUTTONS","is-visible=false")
 
 		Equip()

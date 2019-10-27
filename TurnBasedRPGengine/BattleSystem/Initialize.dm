@@ -39,77 +39,83 @@ mob
 							if(enemy==1)
 								if(enemy_count==1)
 									var/ENEMY/E
-									while(E==null)
-										E=pick(Region01)
-									src.Message("<center>[enemy_count] [E.name] appears!",15,"bottom")
-									Target_List.Add(E)
-									src.Battlers.Add(E)
+									E=pick(Region01)
+									var/ENEMY/O = text2path("/ENEMY/[E]")
 									if(A.user==src.key)
 										for(var/SPAWNS/Enemy/E1 in A.contents)
 											if(!E1.taken)
-												E.loc=E1.loc
+												E = new O(E1.loc)
+												Target_List.Add(E)
+												src.Battlers.Add(E)
+												new /obj/ENEMY_BAR(E)
 												E1.taken=1
 												E.Active()
+									src.Message("<center>[enemy_count] [E.name] appears!",15,"bottom")
 								if(enemy_count==2)
 									var/ENEMY/E
-									while(E==null)
-										E=pick(Region01)
-									var/ENEMY/E2
-									while(E2==null)
-										E2=pick(Region01)
-									src.Message("<center>[E.name] and [E2.name] appear!",15,"bottom")
-									Target_List.Add(E)
-									src.Battlers.Add(E)
-									Target_List.Add(E2)
-									src.Battlers.Add(E2)
+									E=pick(Region01)
+									var/ENEMY/O = text2path("/ENEMY/[E]")
 									if(A.user==src.key)
-										for(var/SPAWNS/Enemy/S1 in A.contents)
-											if(!S1.taken)
-												E.loc=S1.loc
-												S1.taken=1
+										for(var/SPAWNS/Enemy/E1 in A.contents)
+											if(!E1.taken)
+												E = new O(E1.loc)
+												Target_List.Add(E)
+												src.Battlers.Add(E)
+												new /obj/ENEMY_BAR(E)
+												E1.taken=1
 												E.Active()
+									var/ENEMY/E2
+									E2=pick(Region01)
+									var/ENEMY/O2 = text2path("/ENEMY/[E2]")
+									if(A.user==src.key)
 										for(var/SPAWNS/Enemy2/S2 in A.contents)
 											if(!S2.taken)
-												E2.loc=S2.loc
+												E2 = new O2(S2.loc)
+												Target_List.Add(E2)
+												src.Battlers.Add(E2)
+												new /obj/ENEMY_BAR(E2)
 												S2.taken=1
-												spawn(12)
-													E2.Active()
+												E2.Active()
+									src.Message("<center>[E.name] and [E2.name] appear!",15,"bottom")
 
 								if(enemy_count==3)
 									var/ENEMY/E
-									while(E==null)
-										E=pick(Region01)
-									var/ENEMY/E2
-									while(E2==null)
-										E2=pick(Region01)
-									var/ENEMY/E3
-									while(E3==null)
-										E3=pick(Region01)
-									src.Message("<center>[E.name], [E2.name] and [E3.name] appear!",15,"bottom")
-									Target_List.Add(E)
-									src.Battlers.Add(E)
-									Target_List.Add(E2)
-									src.Battlers.Add(E2)
-									Target_List.Add(E3)
-									src.Battlers.Add(E3)
+									E=pick(Region01)
+									var/ENEMY/O = text2path("/ENEMY/[E]")
 									if(A.user==src.key)
 										for(var/SPAWNS/Enemy/E1 in A.contents)
 											if(!E1.taken)
-												E.loc=E1.loc
+												E = new O(E1.loc)
+												Target_List.Add(E)
+												src.Battlers.Add(E)
+												new /obj/ENEMY_BAR(E)
 												E1.taken=1
 												E.Active()
-										for(var/SPAWNS/Enemy2/S1 in A.contents)
-											if(!S1.taken)
-												E2.loc=S1.loc
-												S1.taken=1
-												spawn(12)
-													E2.Active()
-										for(var/SPAWNS/Enemy3/S2 in A.contents)
+									var/ENEMY/E2
+									E2=pick(Region01)
+									var/ENEMY/O2 = text2path("/ENEMY/[E2]")
+									if(A.user==src.key)
+										for(var/SPAWNS/Enemy2/S2 in A.contents)
 											if(!S2.taken)
-												E3.loc=S2.loc
+												E2 = new O2(S2.loc)
+												Target_List.Add(E2)
+												src.Battlers.Add(E2)
+												new /obj/ENEMY_BAR(E2)
 												S2.taken=1
-												spawn(20)
-													E3.Active()
+												E2.Active()
+									var/ENEMY/E3
+									E3=pick(Region01)
+									var/ENEMY/O3 = text2path("/ENEMY/[E3]")
+									if(A.user==src.key)
+										for(var/SPAWNS/Enemy3/S3 in A.contents)
+											if(!S3.taken)
+												E3 = new O3(S3.loc)
+												Target_List.Add(E3)
+												src.Battlers.Add(E3)
+												new /obj/ENEMY_BAR(E3)
+												S3.taken=1
+												E3.Active()
+									src.Message("<center>[E.name], [E2.name] and [E3.name] appear!",15,"bottom")
 							//set the background
 
 							for(var/Party_Members/P in src.Party)

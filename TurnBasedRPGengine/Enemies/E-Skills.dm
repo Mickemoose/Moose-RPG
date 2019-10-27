@@ -8,6 +8,120 @@ E_SKILL
 	proc
 		Activate()
 			..()
+	BURN_UP
+		name="Burn Up"
+		Activate(ENEMY/usr)
+			if(!usr.skilling&&usr.HEALTH<=50)
+				usr.skilling=1
+				usr.can_skill=0
+				for(var/mob/M in world)
+					if(usr in M.Battlers)
+						M.Info("Ho-Oh uses Burn Up!","blue")
+						spawn(14)
+							for(var/obj/INFOBOX/C2 in M.client.screen)
+								del(C2)
+						M<<hooh
+						for(var/Party_Members/Target in M.Party)
+							if(!Target.dead&&Target.IN_BATTLE)
+								new /obj/FX/HOOH/Sunburn(Target.loc)
+								M<<fire
+								M<<hit
+								Target.pixel_y+=4
+								animate(Target,color=rgb(255,0,0),time=3)
+								spawn(0.5)
+									Target.pixel_y-=4
+									Target.pixel_x+=4
+									spawn(0.5)
+										Target.pixel_y-=4
+										Target.pixel_x-=4
+										spawn(0.5)
+											Target.pixel_y+=4
+											Target.pixel_x-=4
+											spawn(0.5)
+												Target.pixel_x+=4
+												Target.pixel_y+=0
+												animate(Target,color=rgb(255,255,255),time=3)
+								new/effect/damage(Target.loc,"<font color=red><b>8</b></font>")
+								Target.HEALTH-=pick(24,26,28,32,30)-Target.FIRE_RESIST
+								M.HPUpdate()
+								if(Target.HEALTH<=0)
+									Target.dead=1
+									M<<sound(Target.dead_sound)
+									if(usr.TURN==Target)
+										if(Target.attacking==1)
+											Target.attacking=0
+											return
+										else
+											M.Turn_End(Target)
+									M.StatUpdate()
+									M.HPUpdate()
+								M.StatUpdate()
+								spawn(2)
+									usr.skilling=0
+								spawn(30)
+									usr.can_skill=1
+	SACRED_FIRE
+		name="Sacred Fire"
+		Activate(ENEMY/usr)
+			if(!usr.skilling)
+				usr.skilling=1
+				usr.can_skill=0
+				for(var/mob/M in world)
+					if(usr in M.Battlers)
+
+						M.Info("Ho-Oh uses Sacred Fire!","blue")
+						spawn(14)
+							for(var/obj/INFOBOX/C2 in M.client.screen)
+								del(C2)
+						M<<hooh
+						var/Party_Members/Target=pick(M.Party)
+						if(!Target.dead&&Target.IN_BATTLE)
+							var/oldlayer=Target.layer
+							Target.layer=EFFECTS_LAYER+1
+							fade.Map(M, 100, 16, 8)
+							spawn(10)
+								var/obj/FX/HOOH/Blast/B=new /obj/FX/HOOH/Blast(Target.loc)
+								B.layer=Target.layer+1
+								M<<fire
+								M<<hit
+								Target.pixel_y+=4
+								animate(Target,color=rgb(255,0,0),time=3)
+								spawn(0.5)
+									Target.pixel_y-=4
+									Target.pixel_x+=4
+									spawn(0.5)
+										Target.pixel_y-=4
+										Target.pixel_x-=4
+										spawn(0.5)
+											Target.pixel_y+=4
+											Target.pixel_x-=4
+											spawn(0.5)
+												Target.pixel_x+=4
+												Target.pixel_y+=0
+												animate(Target,color=rgb(255,255,255),time=3)
+								new/effect/damage(Target.loc,"<font color=red><b>8</b></font>")
+								Target.HEALTH-=pick(22,24,26,28,32,30,20)-Target.FIRE_RESIST
+								M.HPUpdate()
+								if(Target.HEALTH<=0)
+									Target.dead=1
+									Target.layer=oldlayer
+									M<<sound(Target.dead_sound)
+									if(usr.TURN==Target)
+										if(Target.attacking==1)
+											Target.attacking=0
+											return
+										else
+											M.Turn_End(Target)
+									M.StatUpdate()
+									M.HPUpdate()
+								M.StatUpdate()
+								spawn(10)
+									fade.Map(M, 0, 32, 5)
+									Target.layer=oldlayer
+									spawn(2)
+										usr.skilling=0
+									spawn(30)
+										usr.can_skill=1
 	ACID
 		name="Acid Spit"
 		Activate(ENEMY/usr)
@@ -57,6 +171,10 @@ E_SKILL
 								M.StatUpdate()
 								M.HPUpdate()
 							M.StatUpdate()
+							spawn(2)
+								usr.skilling=0
+							spawn(30)
+								usr.can_skill=1
 
 	SAIBA
 		name="Suicide Explode"

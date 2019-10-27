@@ -1234,6 +1234,7 @@ window "Manage"
 		size = 472x504
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1385,6 +1386,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1399,6 +1401,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1413,6 +1416,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1427,6 +1431,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1441,6 +1446,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1455,6 +1461,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1469,6 +1476,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1483,6 +1491,7 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1509,6 +1518,7 @@ window "PARTY"
 		size = 472x504
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1517,7 +1527,7 @@ window "PARTY"
 		can-resize = false
 		is-pane = true
 		image = 'Chat\\Menu.dmi'
-	elem "button10"
+	elem "button11"
 		type = BUTTON
 		pos = 368,232
 		size = 76x20
@@ -1531,6 +1541,21 @@ window "PARTY"
 		saved-params = "is-checked"
 		text = "Magic"
 		command = "MagicMenu"
+		is-flat = true
+	elem "button10"
+		type = BUTTON
+		pos = 368,400
+		size = 76x20
+		anchor1 = 78,79
+		anchor2 = 94,83
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #ff0000
+		border = line
+		saved-params = "is-checked"
+		text = "Exit Game"
+		command = "ExitGame"
 		is-flat = true
 	elem "button6"
 		type = BUTTON
@@ -1612,6 +1637,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1626,6 +1652,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #63c6e7
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1640,6 +1667,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #65ec5e
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1654,6 +1682,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1668,6 +1697,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1682,6 +1712,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1696,6 +1727,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #63c6e7
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1710,6 +1742,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #65ec5e
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1724,6 +1757,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1738,6 +1772,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1752,6 +1787,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1766,6 +1802,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #63c6e7
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1780,6 +1817,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #65ec5e
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1794,6 +1832,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1808,6 +1847,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1822,6 +1862,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "100 TO NEXT LEVEL"
@@ -1835,6 +1876,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #63c6e7
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "P1MP"
@@ -1848,6 +1890,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #65ec5e
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "P1HP"
@@ -1861,6 +1904,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "P1NAME"
@@ -1980,6 +2024,7 @@ window "PARTY"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "LVL 1"
@@ -2386,6 +2431,7 @@ window "default"
 		size = 1904x981
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false

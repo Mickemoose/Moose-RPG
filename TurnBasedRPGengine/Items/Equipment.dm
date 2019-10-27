@@ -53,6 +53,22 @@ EQUIPMENT
 			ELEMENT = "SLIME"
 			icon='Equipment/Weapon/SlimeSword.dmi'
 			WEIGHT=6
+		Sacred_Blade
+			pixel_x=-8
+			pixel_y=-6
+			TRUE_NAME="Sacred Blade"
+			STRENGTH= 23
+			ELEMENT = "FIRE"
+			icon='Equipment/Weapon/HoOhSword.dmi'
+			WEIGHT=6
+		Ruby_Halberd
+			pixel_x=-8
+			pixel_y=-6
+			TRUE_NAME="Ruby Halberd"
+			STRENGTH= 25
+			ELEMENT = "FIRE"
+			icon='Equipment/Weapon/GroudonHalberd.dmi'
+			WEIGHT=6
 		Boo_Axe
 			TRUE_NAME="Spooky Chopper"
 			pixel_x=-8

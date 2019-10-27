@@ -1,6 +1,31 @@
 mob
 	proc
 		DropCheck(ENEMY/enemy)
+			if(enemy.name=="Ho-Oh")
+				var/T2=/RECIPES/Sacred_Blade
+				var/RECIPES/O3 = locate(T2) in src.Recipes
+				if(isnull(O3))
+					src.Recipes.Add(new T2)
+				materialAdd(new /MATERIALS/HOOH/EYE, new /MATERIALS/HOOH/EYE)
+				Info("Fierce Eye Dropped!")
+				spawn(10)
+					for(var/obj/INFOBOX/C2 in client.screen)
+						del(C2)
+				materialAdd(new /MATERIALS/HOOH/FEATHER, new /MATERIALS/HOOH/FEATHER, new /MATERIALS/HOOH/FEATHER, new /MATERIALS/HOOH/FEATHER, new /MATERIALS/HOOH/FEATHER)
+				Info("Rainbow Feather Dropped!")
+				spawn(10)
+					for(var/obj/INFOBOX/C2 in client.screen)
+						del(C2)
+				materialAdd(new /MATERIALS/HOOH/FLAME, new /MATERIALS/HOOH/FLAME, new /MATERIALS/HOOH/FLAME)
+				Info("Sacred Flame Dropped!")
+				spawn(10)
+					for(var/obj/INFOBOX/C2 in client.screen)
+						del(C2)
+				materialAdd(new /MATERIALS/HOOH/PELT, new /MATERIALS/HOOH/PELT, new /MATERIALS/HOOH/PELT, new /MATERIALS/HOOH/PELT, new /MATERIALS/HOOH/PELT, new /MATERIALS/HOOH/PELT, new /MATERIALS/HOOH/PELT)
+				Info("Rainbow Pelt Dropped!")
+				spawn(10)
+					for(var/obj/INFOBOX/C2 in client.screen)
+						del(C2)
 			if(enemy.name=="Slime")
 				var/T2=/RECIPES/Slime_Slayer
 				var/RECIPES/O3 = locate(T2) in src.Recipes

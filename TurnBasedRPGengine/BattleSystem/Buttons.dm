@@ -299,6 +299,24 @@ BATTLE_BUTTONS
 							return
 						else
 							continue */
+	Escape
+		icon_state="escape"
+		New(client/C)
+			C.screen+=src
+			screen_loc="20,14:-5"
+		Click()
+			for(var/Party_Members/P in usr.Party)
+				if(usr.TURN==P)
+					usr<<click
+					if(prob(75))
+						usr.RunAway()
+					else
+						usr.Info("Failed to escape!","black")
+						spawn(10)
+							for(var/obj/INFOBOX/C2 in usr.client.screen)
+								del(C2)
+						src.overlays-=src.overlays
+						usr.Turn_End(P)
 	Cancel
 		icon_state="cancel"
 		New(client/C)
@@ -713,7 +731,7 @@ mob
 				new/BATTLE_BUTTONS/Attack(src.client)
 				new/BATTLE_BUTTONS/Items(src.client)
 				var/BATTLE_BUTTONS/Cancel/C=new/BATTLE_BUTTONS/Cancel(src.client)
-
+				new/BATTLE_BUTTONS/Escape(src.client)
 			//	src.SkillCheck(player)
 				src.SummonCheck(player)
 				if(player.name=="Pikachu")

@@ -1,5 +1,15 @@
 obj
 	OVERWORLD
+		Boss
+			HoOh
+				icon='Overworld/Enemies/HoOh.dmi'
+				density=1
+				verb
+					Interact()
+						set src in oview(1)
+						usr.ASKER=usr
+						usr.ASKING="BOSS: HO-OH"
+						usr.Question("    Do you wish to challenge Ho-Oh?")
 		Item
 			icon='Party/Overworld.dmi'
 			icon_state="item"

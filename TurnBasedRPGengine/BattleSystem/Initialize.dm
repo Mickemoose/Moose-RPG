@@ -7,7 +7,10 @@ mob
 					A.user=src.key
 					A.taken=1
 					src<<sound(null)
-					src<<battle
+					if(enemy=="Ho-Oh")
+						src<<hoohmusic
+					else
+						src<<battle
 					src.overloc=src.loc
 					src.loc=locate(32,32,2)
 					src.invisibility=101
@@ -22,7 +25,17 @@ mob
 							src.invisibility=101
 					//		if(enemy_count>1)
 						//		src.Message("<center>[enemy_count] bad guys appear!",10,"bottom")
-
+							if(enemy=="Ho-Oh")
+								var/ENEMY/BOSS/E=new /ENEMY/BOSS/HOOH
+								src.Message("<center>[E.name] rises to the challenge!",15,"bottom")
+								Target_List.Add(E)
+								src.Battlers.Add(E)
+								if(A.user==src.key)
+									for(var/SPAWNS/Boss/E1 in A.contents)
+										if(!E1.taken)
+											E.loc=E1.loc
+											E1.taken=1
+											E.Active()
 							if(enemy==1)
 								if(enemy_count==1)
 									var/ENEMY/E

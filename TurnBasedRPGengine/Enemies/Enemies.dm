@@ -18,6 +18,7 @@ ENEMY
 		STATUS_PERCENT = 0
 
 		IMMUNE_TO_PHYS = 0
+		IS_BOSS = 0
 
 
 		dead = 0
@@ -33,6 +34,39 @@ ENEMY
 		Active()
 			if(name=="pbag")
 				return
+			if(IS_BOSS)
+				spawn(pick(60,80))
+					for(var/mob/M in world)
+						if(M.client)
+							if(src in M.Battlers)
+								for(var/Party_Members/P in M.Party)
+									if(P.attacking)
+										spawn(pick(20))
+											Active()
+								for(var/ENEMY/E in M.Battlers)
+									if(E.attacking||E.skilling)
+										spawn(pick(20))
+											Active()
+									else
+										if(!attacking&&!E.skilling&&!skilling)
+											if(can_attack)
+
+												if(prob(10))
+													Miss()
+												else
+													if(prob(40))
+														Attack()
+													else
+														if(E_Skills.len != 0 && !E.skilling && E.can_skill)
+															var/E_SKILL/ES=pick(E_Skills)
+															ES.Activate(src)
+														else
+															Attack()
+												spawn(pick(20))
+													Active()
+											else
+												spawn(pick(20))
+													Active()
 			else
 				spawn(pick(95,105,125,150))
 					for(var/mob/M in world)
@@ -148,6 +182,7 @@ ENEMY
 					if(P.WEAPON_TYPE=="GUN")
 						P.clicked=1
 						P.x+=2
+						var/crit=0
 						spawn(1)
 							if(P.icon_state!="Slime-[P.name]")
 								flick("Shoot",P)
@@ -160,6 +195,9 @@ ENEMY
 										usr<<armor
 									if(P.ATTACK_ELEMENT=="BOLT")
 										usr<<shock
+									if(prob(10))
+										usr<<crit
+										crit=1
 									else
 										usr<<shoot
 									pixel_y+=4
@@ -182,6 +220,11 @@ ENEMY
 									P.pixel_y=-30
 									P.pixel_y=-25
 									var/damage=P.STRENGTH*rand(1,1.25)+P.ACC_ADDED-DEFENSE/2
+									if(crit)
+										damage=damage*2
+										new/effect/damage(src.loc,"<font color=yellow><b>CRIT! </b></font><font color=red><b>[round(damage)]</b></font>")
+										HEALTH-=damage
+										crit=0
 									if(src.IMMUNE_TO_PHYS==0)
 										new/effect/damage(src.loc,"<font color=red><b>[round(damage)]</b></font>")
 										HEALTH-=damage
@@ -190,7 +233,7 @@ ENEMY
 										damage=damage*2
 										HEALTH-=damage
 									if(src.IMMUNE_TO_PHYS==1&&P.ATTACK_ELEMENT=="NONE")
-										new/effect/damage(src.loc,"<font color=white><b>0</b></font>")
+										new/effect/damage(src.loc,"<font color=white><b>BLOCKED</b></font>")
 										HEALTH-=0
 									if(HEALTH<=0)
 										spawn(2.5)
@@ -215,7 +258,7 @@ ENEMY
 									usr<<miss
 								spawn(4)
 									x-=2
-									P.x-=4
+									P.x-=2
 									P.pixel_y=-30
 									P.pixel_y=-25
 									new/effect/damage(src.loc,"<font color=white><b>MISS</b></font>")
@@ -226,6 +269,7 @@ ENEMY
 					if(P.WEAPON_TYPE=="SWORD")
 						P.clicked=1
 						P.x+=6
+						var/crit=0
 						spawn(1)
 							if(P.icon_state!="Slime-[P.name]")
 								flick("Attack",P)
@@ -246,6 +290,9 @@ ENEMY
 										usr<<armor
 									if(P.ATTACK_ELEMENT=="BOLT")
 										usr<<shock
+									if(prob(10))
+										usr<<crit
+										crit=1
 									else
 										usr<<hit
 									spawn(0.5)
@@ -266,6 +313,11 @@ ENEMY
 									P.pixel_y=-30
 									P.pixel_y=-25
 									var/damage=P.STRENGTH*rand(1,1.25)+P.STRENGTH_ADDED-DEFENSE/2
+									if(crit)
+										damage=damage*2
+										new/effect/damage(src.loc,"<font color=yellow><b>CRIT! </b></font><font color=red><b>[round(damage)]</b></font>")
+										HEALTH-=damage
+										crit=0
 									if(src.IMMUNE_TO_PHYS==0)
 										new/effect/damage(src.loc,"<font color=red><b>[round(damage)]</b></font>")
 										HEALTH-=damage
@@ -274,7 +326,7 @@ ENEMY
 										damage=damage*2
 										HEALTH-=damage
 									if(src.IMMUNE_TO_PHYS==1&&P.ATTACK_ELEMENT=="NONE")
-										new/effect/damage(src.loc,"<font color=white><b>0</b></font>")
+										new/effect/damage(src.loc,"<font color=white><b>BLOCKED</b></font>")
 										HEALTH-=0
 									if(HEALTH<=0)
 										spawn(2.5)
@@ -398,6 +450,7 @@ ENEMY
 
 
 	BOSS
+		IS_BOSS=1
 		GROUDON
 			name="Groudon"
 			icon='Enemies/Bosses/Groudon.dmi'
@@ -406,6 +459,18 @@ ENEMY
 			STRENGTH=15
 			DEFENSE=8
 			GOLD_GAIN=2400
+		HOOH
+			name="Ho-Oh"
+			icon='BattleSystem/Skills/HoOh/HoOh.dmi'
+			dir=WEST
+			HEALTH=200
+			EXP_GAIN=250
+			STRENGTH=16
+			DEFENSE=10
+			WEAK_TO = "WATER"
+			GOLD_GAIN=3200
+			New()
+				E_Skills.Add(new/E_SKILL/SACRED_FIRE, new/E_SKILL/BURN_UP)
 
 
 	proc
@@ -440,9 +505,11 @@ ENEMY
 					if(src in M.Battlers)
 						var/Party_Members/Target=pick(M.Party)
 						if(!Target.dead)
+							Target.BEING_ATTACKED=1
 							pixel_x+=6
 							spawn(3)
 								pixel_x-=6
+								Target.BEING_ATTACKED=0
 							new/effect/damage(Target.loc,"<font color=white><b>MISS</b></font>")
 						spawn(10)
 							attacking=0
@@ -453,11 +520,13 @@ ENEMY
 					if(src in M.Battlers)
 						var/Party_Members/Target=pick(M.Party)
 						if(!Target.dead&&!Target.clicked&&Target.IN_BATTLE&&!Target.attacking)
+							Target.BEING_ATTACKED=1
 							var/spot=loc
 							loc=Target.loc
 							if(icon!='Baddies1.dmi')
 								if(icon!='Baddies64.dmi')
-									flick("ATTACK",src)
+									if(icon!='BattleSystem/Skills/HoOh/HoOh.dmi')
+										flick("ATTACK",src)
 							spawn(3)
 								loc=spot
 							M<<hit
@@ -482,7 +551,9 @@ ENEMY
 								M.StatUpdate()
 								M.HPUpdate()
 							M.StatUpdate()
-						spawn(16)
+							spawn(5)
+								Target.BEING_ATTACKED=0
+						spawn(15)
 							attacking=0
 
 

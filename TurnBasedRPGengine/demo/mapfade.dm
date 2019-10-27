@@ -12,7 +12,7 @@ map_fade
 	screen_loc = "NORTHWEST to SOUTHEAST"
 
 	// Defaults to 255, but this can be altered with the fade.MapLayer() proc.
-	layer = FLOAT_LAYER
+	layer = 255
 
 
 fade

@@ -20,6 +20,7 @@ Party_Members
 		DEFENSE = 6
 		STRENGTH_ADDED = 0
 		DEFENSE_ADDED = 0
+		BEING_ATTACKED=0
 		ACCURACY = 10
 		ACC_ADDED = 0
 		POISON_RESIST = 1
@@ -450,30 +451,34 @@ Party_Members
 					var/A = 10-WEAPON_WEIGHT
 					if(A <=5)
 						A=6
-					timer += A
-					for(var/mob/M in world)
-						if(M.client&&M.IN_BATTLE)
-							if(src in M.Party)
-								M.TimerUpdate()
-					if(timer>=100)
+					if(BEING_ATTACKED)
+						spawn(10)
+							Timer()
+					else
+						timer += A
 						for(var/mob/M in world)
 							if(M.client&&M.IN_BATTLE)
 								if(src in M.Party)
-									if(M.TURN==null)
-										M.TURN=src
-										ready = 1
-										overlays += /obj/ARROW
-										overlays += /obj/CIRCLE
+									M.TimerUpdate()
+						if(timer>=100)
+							for(var/mob/M in world)
+								if(M.client&&M.IN_BATTLE)
+									if(src in M.Party)
+										if(M.TURN==null)
+											M.TURN=src
+											ready = 1
+											overlays += /obj/ARROW
+											overlays += /obj/CIRCLE
 
-									//	TURN=src
-										M.Turn_Start(src)
+										//	TURN=src
+											M.Turn_Start(src)
 
-									else
-										M.Wait_List.Add(src)
+										else
+											M.Wait_List.Add(src)
 
 
-					else
-						Timer()
+						else
+							Timer()
 
 		Cast(var/MATERIA/MA.Action(src))
 			var/MATERIA/MA

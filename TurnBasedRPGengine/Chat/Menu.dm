@@ -6,6 +6,9 @@ mob
 		Slot=1
 		OldSlot2=1
 	verb
+		ExitGame()
+			set hidden=1
+			winset(usr, null, "command=.quit")
 		ToggleFullscreen()
 			set hidden=1
 			usr.client.ToggleFullscreen()

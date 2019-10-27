@@ -4,12 +4,70 @@
 
 mob
 	proc
+		RunAway()
+			for(var/Party_Members/P in src.Party)
+				P.IN_BATTLE=0
+			src.Info("The Party runs away!","black")
+			src<<sound(null)
+			src<<escape
+			spawn(10)
+				for(var/obj/INFOBOX/C2 in src.client.screen)
+					del(C2)
+			src.Wait_List.Remove(src.Wait_List)
+			src.IN_BATTLE=0
+			src.TURN=null
+			fade.Map(src, 255, 15, 8)
+			spawn(16)
+				for(var/ARENAS/A in world)
+					if(A.user==src.key)
+						for(var/ENEMY/E in src.Battlers)
+							Target_List.Remove(E)
+							Battlers.Remove(E)
+							del(E)
+						for(var/SPAWNS/Enemy/E1 in A.contents)
+							E1.taken=0
+						for(var/SPAWNS/Enemy2/E1 in A.contents)
+							E1.taken=0
+						for(var/SPAWNS/Enemy3/E1 in A.contents)
+							E1.taken=0
+						A.taken=0
+						A.user = null
+			for(var/BATTLE_BUTTONS/B in src.client.screen)
+				del(B)
+			for(var/BATTLE_STATS/S in src.client.screen)
+				del(S)
+			for(var/obj/BATTLEBOX/B in src.client.screen)
+				del(B)
+			spawn(19)
+
+				src<<realm
+				src.loc=src.overloc
+				src.invisibility=0
+			spawn(20)
+				fade.Map(src, 0, 15, 8)
+				src.OVERKILLED=0
+				for(var/Party_Members/P in src.Party)
+					P.IN_BATTLE=0
+					P.timer=0
+					src.Alives.Remove(P)
+					P.overlays-=/obj/ARROW
+					P.overlays-=/obj/CIRCLE
+					P.Start_Ailment(STATUS="Cure")
+					P.loc=src.contents
+
+
+
+
+
 		GameOver()
 			src<<sound(null)
 	//		src<<fanfare
 			for(var/Party_Members/P in src.Party)
 				P.IN_BATTLE=0
-			src.Message("The Party has fallen...",30,"top")
+			src.Info("The Party has fallen...","black")
+			spawn(30)
+				for(var/obj/INFOBOX/C2 in src.client.screen)
+					del(C2)
 			spawn(30)
 				src<<sound(null)
 				src<<realm

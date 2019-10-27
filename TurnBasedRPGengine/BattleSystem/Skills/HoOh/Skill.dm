@@ -82,6 +82,16 @@ obj
 			Blast
 				icon='BattleSystem/Skills/HoOh/FX.dmi'
 				layer=EFFECTS_LAYER
+				New()
+					spawn(20)
+						del(src)
+			Sunburn
+				icon='BattleSystem/Skills/HoOh/FX.dmi'
+				icon_state="sunburn"
+				layer=FLOAT_LAYER
+				New()
+					spawn(20)
+						del(src)
 			HoOh
 				icon='BattleSystem/Skills/HoOh/HoOh.dmi'
 

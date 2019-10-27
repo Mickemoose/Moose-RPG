@@ -1,18 +1,21 @@
 var
 	sound
 		realm = sound('MIDIS/FF4-WORLD.mid', 1,volume=30)
-		battle = pick(sound('MIDIS/RSE-BATTLE.mid',1,volume=20),sound('MIDIS/ffxbat.mid',1,volume=20),sound('MIDIS/bofbattle.mid',1,volume=20),sound('MIDIS/ff6battle.mid',1,volume=20))
+		battle = pick(sound('MIDIS/RSE-BATTLE.mid',1,volume=20),sound('MIDIS/ffxbat.mid',1,volume=20),sound('MIDIS/bofbattle.mid',1,volume=20),sound('MIDIS/ff6battle.mid',1,volume=20),sound('MIDIS/ff7bat.mid',1,volume=20))
 		duel = sound('MIDIS/ffxbat.mid',1,volume=30)
 		fanfare = sound('MIDIS/FF7-FANFARE.mid',1,volume=30)
+		hoohmusic = sound('MIDIS/VSHoOh.mid',1,volume=30)
 		rockbott = sound('MIDIS/ordonvillage.mid',1,volume=20)
 
 		hit = sound('SOUND FX/hit.wav',volume=30)
+		crit = sound('SOUND FX/crit.wav',volume=30)
 		shoot = sound('SOUND FX/shoot.wav',volume=70)
 		miss = sound('SOUND FX/miss.wav',volume=30)
 		armor = sound('SOUND FX/armor.wav',volume=30)
 		item = sound('SOUND FX/item.wav',volume=30)
 		BOO = sound('SOUND FX/boo.WAV',volume=30)
 		slash = sound('SOUND FX/slash.wav',volume=30)
+		fire = sound('SOUND FX/fire.wav',volume=30)
 		wind = sound('SOUND FX/wind.ogg', volume=30)
 		lugia = sound('SOUND FX/lugiacry.wav', volume=30)
 		hooh = sound('SOUND FX/hooh.wav', volume=30)
@@ -31,6 +34,7 @@ var
 		splode = sound('SOUND FX/splode.wav',volume=30)
 		shock = sound('BattleSystem/Skills/Pikachu/shock.wav',volume=30)
 		poison = sound('SOUND FX/poison.wav',volume=30)
+		escape = sound('SOUND FX/escape.wav',volume=30)
 
 		//pikachu soundbank
 

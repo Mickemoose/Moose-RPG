@@ -430,6 +430,64 @@ mob
 							del(E)
 
 				Equipment.Add(new/EQUIPMENT/ARMOR/OUTFIT/Gamma_Plating)
+			if(usr.Recipe_Selected=="Sacred Blade")
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/HOOH/EYE/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/HOOH/FLAME/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<2, num++)
+					for(var/MATERIALS/HOOH/PELT/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<4, num++)
+					for(var/MATERIALS/HOOH/FEATHER/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/WEAPONS/Sacred_Blade)
 
 
 RECIPES
@@ -637,6 +695,33 @@ RECIPES
 							for(var/MATERIALS/GAMMA/GEAR/E3 in usr.Materials)
 								if(E3.contents.len+1>=2)
 									for(var/MATERIALS/GAMMA/FUEL/E4 in usr.Materials)
+										if(E4.contents.len+1>=1)
+											winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Sacred_Blade
+		icon_state="weapon"
+		DisplayIcon='Equipment/Weapon/HoOhSword.dmi'
+		Ingredient_1 ="/2 Rainbow Pelt"
+		Ingredient_2 ="/1 Fierce Eye"
+		Ingredient_3 ="/4 Rainbow Feather"
+		Ingredient_4 ="/1 Sacred Flame"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/HOOH/PELT/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/HOOH/EYE/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			for(var/MATERIALS/HOOH/FEATHER/E in usr.Materials)
+				winset(usr,"CRAFT.In3","text='[E.suffix][src.Ingredient_3]'")
+			for(var/MATERIALS/HOOH/FLAME/E in usr.Materials)
+				winset(usr,"CRAFT.In4","text='[E.suffix][src.Ingredient_4]'")
+			for(var/MATERIALS/HOOH/PELT/E in usr.Materials)
+				if(E.contents.len+1>=2)
+					for(var/MATERIALS/HOOH/EYE/E2 in usr.Materials)
+						if(E2.contents.len+1>=1)
+							for(var/MATERIALS/HOOH/FEATHER/E3 in usr.Materials)
+								if(E3.contents.len+1>=4)
+									for(var/MATERIALS/HOOH/FLAME/E4 in usr.Materials)
 										if(E4.contents.len+1>=1)
 											winset(usr,"CRAFT.CraftButton","is-visible=true")
 	Slime_Slayer

@@ -1,5 +1,8 @@
 macro "macro"
 	elem 
+		name = "SHIFT+Tab"
+		command = "ToggleFullscreen"
+	elem 
 		name = "Center+REP"
 		command = ".center"
 	elem 
@@ -56,7 +59,6 @@ window "CRAFT"
 		size = 472x504
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -184,7 +186,6 @@ window "CRAFT"
 		font-family = "NEStalgic8"
 		font-size = 16
 		text-color = #ffffff
-		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "Crafting"
@@ -871,6 +872,264 @@ window "ITEMS"
 		small-icons = true
 		highlight-color = #000000
 
+window "MAGIC"
+	elem "MAGIC"
+		type = MAIN
+		pos = 281,0
+		size = 472x504
+		anchor1 = none
+		anchor2 = none
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		image = 'Chat\\Menu.dmi'
+	elem "P4_Button"
+		type = BUTTON
+		pos = 344,40
+		size = 100x100
+		anchor1 = none
+		anchor2 = none
+		text-color = #ffffff
+		background-color = #b70000
+		is-visible = false
+		border = line
+		saved-params = "is-checked"
+		text = ""
+		command = "P4Equip"
+		is-flat = true
+	elem "P3_Button"
+		type = BUTTON
+		pos = 240,40
+		size = 100x100
+		anchor1 = none
+		anchor2 = none
+		text-color = #ffffff
+		background-color = #b70000
+		is-visible = false
+		border = line
+		saved-params = "is-checked"
+		text = ""
+		command = "P3Equip"
+		is-flat = true
+	elem "P2_Button"
+		type = BUTTON
+		pos = 136,40
+		size = 100x100
+		anchor1 = none
+		anchor2 = none
+		text-color = #ffffff
+		background-color = #b70000
+		is-visible = false
+		border = line
+		saved-params = "is-checked"
+		text = ""
+		command = "P2Equip"
+		is-flat = true
+	elem "P1_Button"
+		type = BUTTON
+		pos = 32,40
+		size = 100x100
+		anchor1 = none
+		anchor2 = none
+		text-color = #ffffff
+		background-color = #b70000
+		is-visible = false
+		border = line
+		saved-params = "is-checked"
+		text = ""
+		command = "P1Equip"
+		is-flat = true
+	elem "Mask"
+		type = LABEL
+		pos = 43,216
+		size = 204x24
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		is-transparent = true
+		saved-params = ""
+		text = "Mask"
+		align = left
+	elem "button1"
+		type = BUTTON
+		pos = 392,264
+		size = 60x20
+		anchor1 = 80,8
+		anchor2 = 92,12
+		text-color = #ffffff
+		background-color = #ff0000
+		border = line
+		saved-params = "is-checked"
+		text = "BACK"
+		command = "Back"
+		is-flat = true
+	elem "MAGIC1"
+		type = LABEL
+		pos = 43,200
+		size = 204x16
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		is-transparent = true
+		saved-params = ""
+		text = "Magic 1: "
+		align = left
+	elem "HEAD"
+		type = LABEL
+		pos = 43,240
+		size = 204x24
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		is-transparent = true
+		saved-params = ""
+		text = "Head"
+		align = left
+	elem "Outfit"
+		type = LABEL
+		pos = 43,264
+		size = 205x24
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		is-transparent = true
+		saved-params = ""
+		text = "Outfit"
+		align = left
+	elem "label3"
+		type = LABEL
+		pos = 168,16
+		size = 116x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		is-transparent = true
+		saved-params = ""
+		text = "MAGIC"
+	elem "label2"
+		type = LABEL
+		pos = 288,284
+		size = 116x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #ff80ff
+		is-transparent = true
+		saved-params = ""
+		text = "Summons"
+	elem "MP"
+		type = LABEL
+		pos = 40,182
+		size = 144x13
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #379ff4
+		is-transparent = true
+		saved-params = ""
+		text = "MP: 100/100"
+		align = left
+	elem "HP"
+		type = LABEL
+		pos = 40,175
+		size = 144x7
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #39ff09
+		is-transparent = true
+		saved-params = ""
+		text = "HP: 100/100"
+		align = left
+	elem "label1"
+		type = LABEL
+		pos = 52,283
+		size = 116x20
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #ff80ff
+		is-transparent = true
+		saved-params = ""
+		text = "Magic"
+	elem "WEAPONS"
+		type = GRID
+		pos = 248,304
+		size = 200x168
+		anchor1 = none
+		anchor2 = none
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = ""
+		cells = 1x0
+		current-cell = 1,1
+		show-lines = none
+		small-icons = true
+		highlight-color = #ff0000
+		is-list = true
+	elem "ARMOR"
+		type = GRID
+		pos = 21,304
+		size = 200x168
+		anchor1 = none
+		anchor2 = none
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = ""
+		cells = 1x0
+		current-cell = 1,1
+		show-lines = none
+		small-icons = true
+		highlight-color = #18eb0e
+		is-list = true
+	elem "NAME"
+		type = LABEL
+		pos = 40,152
+		size = 127x12
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #ff80ff
+		is-transparent = true
+		saved-params = ""
+		text = "STR"
+		align = left
+	elem "LEVEL"
+		type = LABEL
+		pos = 40,165
+		size = 72x8
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		is-transparent = true
+		saved-params = ""
+		text = "LVL 1"
+		align = left
+
 window "MATERIALS"
 	elem "MATERIALS"
 		type = MAIN
@@ -1258,6 +1517,21 @@ window "PARTY"
 		can-resize = false
 		is-pane = true
 		image = 'Chat\\Menu.dmi'
+	elem "button10"
+		type = BUTTON
+		pos = 368,232
+		size = 76x20
+		anchor1 = 78,46
+		anchor2 = 94,50
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #ff0000
+		border = line
+		saved-params = "is-checked"
+		text = "Magic"
+		command = "MagicMenu"
+		is-flat = true
 	elem "button6"
 		type = BUTTON
 		pos = 368,206

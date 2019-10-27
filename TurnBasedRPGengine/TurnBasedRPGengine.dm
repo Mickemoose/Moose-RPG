@@ -10,10 +10,21 @@ world
 
 
 client
-	perspective=EDGE_PERSPECTIVE
-//	fps=30
+	perspective = EDGE_PERSPECTIVE
 	var
-
+		fullscreen = 0	//Keep track of whether window is in fullscreen mode or not.
+	New() //When a new client arrives (a new user logs in)...
+		..() //Perform the default new client proc
+		ToggleFullscreen() //Then toggle fullscreen to TRUE
+	verb //Verbs can be accessed by the macros (using key presses), so we need to define verbs (not procs) for our key presses.
+		ToggleFullscreen()
+			fullscreen = !fullscreen //Toggle the fullscreen variable
+			if(fullscreen) //If fullscreen == 1 (TRUE)
+				winset(src, "default", "is-maximized=false;can-resize=false;titlebar=false;menu=") //Reset to not maximized and turn off titlebar.
+				winset(src, "default", "is-maximized=true") //Now set to maximized. We have to do this separately, so that the taskbar is appropriately covered.
+			else //If fullscreen == 0 (FALSE)
+				winset(src, "default", "is-maximized=true;can-resize=true;titlebar=true;menu=menu") //Set window to normal size.
+	var
 		map_fade/map_fade_loaded
 mob/var
 	TURN = null
@@ -28,7 +39,6 @@ mob
 		ASKING="NOTHING"
 		ANSWER="NO"
 		CLASS2 = "NONE"
-
 		ENEMY_NUMBER=0
 		IN_BATTLE=0
 		IN_DUEL=0
@@ -76,7 +86,7 @@ mob
 		winset(src, "default.map1", "zoom=2")
 		for(var/mob/M in world)
 			if(M.client)
-				M.Info("[src] has entered the realm..")
+				M.Info("[src] has entered the realm..","black")
 	//	Info("[Region01.len] monsters left")
 		spawn(12)
 			for(var/obj/INFOBOX/C2 in client.screen)
@@ -96,23 +106,23 @@ mob
 				loc=locate(41,110,1)
 
 				if(usr.key=="Prazon")
-					icon='Overworld/Characters/BaseWhiteMale.dmi'
+					icon='Overworld/Characters/Brendan.dmi'
 					Party.Add(new/Party_Members/BRENDAN)
 					Reserves.Add(new/Party_Members/DEREK, new/Party_Members/HUNTER, new/Party_Members/LAUNDRY, new/Party_Members/PIKACHU)
 					for(var/Party_Members/DEREK/D in Reserves)
 						D.Party_Position=0
-					Equipment.Add(new/EQUIPMENT/ARMOR/OUTFIT/SOLDIER_Third_Class_Outfit, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/ARMOR/OUTFIT/Tempestra_Garb, new/EQUIPMENT/ARMOR/OUTFIT/SpawnFake_Garb, new/EQUIPMENT/ARMOR/OUTFIT/Laundry_Garb, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword)
+					Equipment.Add(new/EQUIPMENT/ARMOR/OUTFIT/Prazon_Garb, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/ARMOR/OUTFIT/Tempestra_Garb, new/EQUIPMENT/ARMOR/OUTFIT/SpawnFake_Garb, new/EQUIPMENT/ARMOR/OUTFIT/Laundry_Garb, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword)
 				if(usr.key=="Mickemoose")
 					icon='Overworld/Characters/Derek.dmi'
 					Party.Add(new/Party_Members/DEREK, new/Party_Members/HUNTER, new/Party_Members/LAUNDRY, new/Party_Members/BECCA)
 					Reserves.Add(new/Party_Members/BRENDAN)
 					for(var/Party_Members/BRENDAN/D in Reserves)
 						D.Party_Position=0
-					Equipment.Add(new/EQUIPMENT/ARMOR/OUTFIT/SOLDIER_Third_Class_Outfit, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/ARMOR/OUTFIT/Tempestra_Garb, new/EQUIPMENT/ARMOR/OUTFIT/Becca_Garb, new/EQUIPMENT/ARMOR/OUTFIT/SpawnFake_Garb, new/EQUIPMENT/ARMOR/OUTFIT/Laundry_Garb, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword)
+					Equipment.Add(new/EQUIPMENT/ARMOR/OUTFIT/Prazon_Garb, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/ARMOR/OUTFIT/Tempestra_Garb, new/EQUIPMENT/ARMOR/OUTFIT/Becca_Garb, new/EQUIPMENT/ARMOR/OUTFIT/SpawnFake_Garb, new/EQUIPMENT/ARMOR/OUTFIT/Laundry_Garb, new/EQUIPMENT/ARMOR/MASK/Glasses, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword, new/EQUIPMENT/WEAPONS/Iron/Broadsword)
 				itemAdd(new/ITEMS/Potion)
 				itemAdd(new/ITEMS/Potion)
 				itemAdd(new/ITEMS/Potion)
-				Equipment.Add(new/EQUIPMENT/WEAPONS/GUNS/Gamma_Ray)
+				Equipment.Add(new/EQUIPMENT/WEAPONS/GUNS/Blaster)
 				itemAdd(new/ITEMS/Potion)
 				itemAdd(new/ITEMS/Ether)
 				itemAdd(new/ITEMS/Ether)

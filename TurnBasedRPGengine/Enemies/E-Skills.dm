@@ -8,17 +8,67 @@ E_SKILL
 	proc
 		Activate()
 			..()
+	ACID
+		name="Acid Spit"
+		Activate(ENEMY/usr)
+			if(!usr.skilling)
+				usr.skilling=1
+				usr.can_skill=0
+				for(var/mob/M in world)
+					if(usr in M.Battlers)
+						M.Info("Acid Spit","blue")
+						spawn(14)
+							for(var/obj/INFOBOX/C2 in M.client.screen)
+								del(C2)
+						M<<saiba
+						var/Party_Members/Target=pick(M.Party)
+						new /obj/FX/POISON(Target.loc)
+						if(!Target.dead&&Target.IN_BATTLE)
+							M<<hit
+							Target.pixel_y+=4
+							animate(Target,color=rgb(255,0,0),time=3)
+							spawn(0.5)
+								Target.pixel_y-=4
+								Target.pixel_x+=4
+								spawn(0.5)
+									Target.pixel_y-=4
+									Target.pixel_x-=4
+									spawn(0.5)
+										Target.pixel_y+=4
+										Target.pixel_x-=4
+										spawn(0.5)
+											Target.pixel_x+=4
+											Target.pixel_y+=0
+											animate(Target,color=rgb(255,255,255),time=3)
+							new/effect/damage(Target.loc,"<font color=red><b>8</b></font>")
+							Target.HEALTH-=pick(6,8,10,12,4,3,5)
+							if(prob(10))
+								Target.Start_Ailment("Poison")
+							M.HPUpdate()
+							if(Target.HEALTH<=0)
+								Target.dead=1
+								M<<sound(Target.dead_sound)
+								if(usr.TURN==Target)
+									if(Target.attacking==1)
+										Target.attacking=0
+										return
+									else
+										M.Turn_End(Target)
+								M.StatUpdate()
+								M.HPUpdate()
+							M.StatUpdate()
+
 	SAIBA
 		name="Suicide Explode"
 		Activate(ENEMY/usr)
 			for(var/mob/M in world)
 				if(usr in M.Battlers)
 					for(var/ENEMY/E in M.Battlers)
-						if(M.Battlers.len>1)
+						if(M.Battlers.len>1&&usr.HEALTH<=10)
 							if(!usr.skilling&&usr.can_skill)
 								usr.skilling=1
 								usr.can_skill = 0
-								M.Info("Saibamen is choosing its target!")
+								M.Info("Saibamen is choosing its target!","blue")
 								var/Party_Members/TARGET=pick(M.Alives)
 
 								spawn(14)
@@ -28,7 +78,7 @@ E_SKILL
 								spawn(30)
 									if(!usr.dead&&TARGET.GUEST==0&&TARGET.IN_BATTLE)
 										M<<saiba
-										M.Info("[TARGET] can't get out of Saibamens Grasp!")
+										M.Info("[TARGET] can't get out of Saibamens Grasp!","blue")
 										usr.invisibility=101
 										M.ENEMY_NUMBER--
 										M.Battlers.Remove(src)
@@ -42,7 +92,7 @@ E_SKILL
 										spawn(60)
 											if(!usr.dead)
 												TARGET.icon_state="Boom"
-												M.Info("Saibamen is releasing a ton of energy!?")
+												M.Info("Saibamen is releasing a ton of energy!?","blue")
 												M<<saibaboom
 												spawn(14)
 													for(var/obj/INFOBOX/C2 in M.client.screen)
@@ -72,7 +122,7 @@ E_SKILL
 				usr.can_skill = 0
 				for(var/mob/M in world)
 					if(usr in M.Battlers)
-						M.Info("Metool goes into his hat!")
+						M.Info("Metool goes into his hat!","blue")
 						spawn(14)
 							for(var/obj/INFOBOX/C2 in M.client.screen)
 								del(C2)
@@ -85,7 +135,7 @@ E_SKILL
 								spawn(3)
 									usr.icon_state="METOOL"
 									usr.IMMUNE_TO_PHYS=0
-									M.Info("Metool is visible again!")
+									M.Info("Metool is visible again!","blue")
 									spawn(14)
 										for(var/obj/INFOBOX/C2 in M.client.screen)
 											del(C2)
@@ -101,7 +151,7 @@ E_SKILL
 				usr.can_skill = 0
 				for(var/mob/M in world)
 					if(usr in M.Battlers)
-						M.Info("Boo is shy!")
+						M.Info("Boo is shy!","blue")
 						animate(usr, alpha = 150, time = 5)
 						spawn(14)
 							for(var/obj/INFOBOX/C2 in M.client.screen)
@@ -119,7 +169,7 @@ E_SKILL
 										M2<<BOO
 								usr.icon_state="BOO"
 								usr.IMMUNE_TO_PHYS=0
-								M.Info("Boo is confident again!")
+								M.Info("Boo is confident again!","blue")
 								spawn(14)
 									for(var/obj/INFOBOX/C2 in M.client.screen)
 										del(C2)
@@ -134,7 +184,7 @@ E_SKILL
 				usr.can_skill=0
 				for(var/mob/M in world)
 					if(usr in M.Battlers)
-						M.Info("Gamma Blast")
+						M.Info("Gamma Blast","blue")
 						spawn(14)
 							for(var/obj/INFOBOX/C2 in M.client.screen)
 								del(C2)
@@ -169,7 +219,7 @@ E_SKILL
 													Target.pixel_y+=0
 													animate(Target,color=rgb(255,255,255),time=3)
 									new/effect/damage(Target.loc,"<font color=red><b>8</b></font>")
-									Target.HEALTH-=8
+									Target.HEALTH-=4
 									M.HPUpdate()
 									if(Target.HEALTH<=0)
 										Target.dead=1
@@ -201,7 +251,7 @@ E_SKILL
 														Target.pixel_x+=4
 														animate(Target,color=rgb(255,255,255),time=3)
 										new/effect/damage(Target.loc,"<font color=red><b>8</b></font>")
-										Target.HEALTH-=8
+										Target.HEALTH-=4
 										M.HPUpdate()
 										if(Target.HEALTH<=0)
 											Target.dead=1
@@ -233,7 +283,7 @@ E_SKILL
 															Target.pixel_x+=4
 															animate(Target,color=rgb(255,255,255),time=3)
 											new/effect/damage(Target.loc,"<font color=red><b>8</b></font>")
-											Target.HEALTH-=8
+											Target.HEALTH-=4
 											M.HPUpdate()
 											if(Target.HEALTH<=0)
 												Target.dead=1

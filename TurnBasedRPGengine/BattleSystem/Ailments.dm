@@ -34,7 +34,7 @@ Party_Members
 					Poison()
 					for(var/mob/M in world)
 						if(src in M.Alives)
-							M.Info("[name] has been poisoned!")
+							M.Info("[name] has been <font color=purple>poisoned!","green")
 							spawn(14)
 								for(var/obj/INFOBOX/C2 in M.client.screen)
 									del(C2)

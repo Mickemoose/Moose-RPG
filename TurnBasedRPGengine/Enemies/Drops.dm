@@ -1,6 +1,23 @@
 mob
 	proc
 		DropCheck(ENEMY/enemy)
+			if(enemy.name=="Slime")
+				var/T2=/RECIPES/Slime_Slayer
+				var/RECIPES/O3 = locate(T2) in src.Recipes
+				if(isnull(O3))
+					src.Recipes.Add(new T2)
+				if(prob(30))
+					materialAdd(new /MATERIALS/SLIME/GOOP)
+					Info("Slime Goop Dropped!")
+					spawn(10)
+						for(var/obj/INFOBOX/C2 in client.screen)
+							del(C2)
+				if(prob(15))
+					materialAdd(new /MATERIALS/SLIME/EYE)
+					Info("Uncanny Eye Dropped!")
+					spawn(10)
+						for(var/obj/INFOBOX/C2 in client.screen)
+							del(C2)
 			if(enemy.name=="Boo")
 				var/T2=/RECIPES/Spooky_Chopper
 				var/RECIPES/O3 = locate(T2) in src.Recipes

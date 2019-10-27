@@ -11,6 +11,11 @@ MATERIA
 
 	MAGIC
 		icon_state="magic"
+		POISON
+			NAME="Poison"
+			MANA_COST = 8
+			ELEMENT="POISON"
+
 		BOLT
 			NAME="Thunder"
 			MANA_COST = 5

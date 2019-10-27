@@ -10,6 +10,20 @@ MATERIALS
 			winset(usr,"MATERIALS.Desc","text='[src.DESC]'")
 			usr << output("<BIG>\icon [src]</BIG>", "MATERIALS.grid")
 
+	SLIME
+		GOOP
+			name="Slime Goop"
+			icon_state="liquid"
+			DESC = "A blue viscous substance"
+			New()
+				icon+=rgb(0,0,200)
+		EYE
+			name="Uncanny Eyeball"
+			icon_state="eye"
+			DESC = "A large unsettling looking eyeball, you can feel it staring through your very core..."
+			New()
+				icon+=rgb(0,0,201)
+
 	BOO
 		FANG
 			name="Boo Fang"

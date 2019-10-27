@@ -6,7 +6,9 @@ mob
 		Slot=1
 		OldSlot2=1
 	verb
-
+		ToggleFullscreen()
+			set hidden=1
+			usr.client.ToggleFullscreen()
 		CraftMenu()
 			set hidden=1
 			usr<<menubutton
@@ -74,6 +76,7 @@ mob
 					winset(usr,"Manage.ERROR","is-visible=true;text='fuck off lmao")
 					spawn(5)
 						winset(usr,"Manage.ERROR","is-visible=false")
+						Manage()
 					return
 				else
 					for(var/Party_Members/P1 in usr.Party)
@@ -88,6 +91,7 @@ mob
 					winset(usr,"Manage.ERROR","is-visible=true;text='fuck off lmao")
 					spawn(5)
 						winset(usr,"Manage.ERROR","is-visible=false")
+						Manage()
 					return
 				else
 					for(var/Party_Members/P1 in usr.Party)
@@ -102,6 +106,7 @@ mob
 					winset(usr,"Manage.ERROR","is-visible=true;text='fuck off lmao")
 					spawn(5)
 						winset(usr,"Manage.ERROR","is-visible=false")
+						Manage()
 					return
 				else
 					for(var/Party_Members/P1 in usr.Party)
@@ -116,6 +121,7 @@ mob
 					winset(usr,"Manage.ERROR","is-visible=true;text='fuck off lmao")
 					spawn(5)
 						winset(usr,"Manage.ERROR","is-visible=false")
+						Manage()
 					return
 				else
 					for(var/Party_Members/P1 in usr.Party)
@@ -130,9 +136,19 @@ mob
 				usr.managing=1
 				usr<<equip
 				winset(usr,"Manage.P1_BORDER","is-visible=true")
+			else
+				Manage()
+				usr.managing=1
+				usr<<equip
+				winset(usr,"Manage.P1_BORDER","is-visible=true")
 		P2Manage()
 			set hidden=1
 			if(usr.managing==0)
+				usr.managing=2
+				usr<<equip
+				winset(usr,"Manage.P2_BORDER","is-visible=true")
+			else
+				Manage()
 				usr.managing=2
 				usr<<equip
 				winset(usr,"Manage.P2_BORDER","is-visible=true")
@@ -142,9 +158,19 @@ mob
 				usr.managing=3
 				usr<<equip
 				winset(usr,"Manage.P3_BORDER","is-visible=true")
+			else
+				Manage()
+				usr.managing=3
+				usr<<equip
+				winset(usr,"Manage.P3_BORDER","is-visible=true")
 		P4Manage()
 			set hidden=1
 			if(usr.managing==0)
+				usr.managing=4
+				usr<<equip
+				winset(usr,"Manage.P4_BORDER","is-visible=true")
+			else
+				Manage()
 				usr.managing=4
 				usr<<equip
 				winset(usr,"Manage.P4_BORDER","is-visible=true")
@@ -396,14 +422,16 @@ mob
 					var/I = 0
 					var/A = 0
 					for(var/EQUIPMENT/WEAPONS/O in src.Equipment)//Loop through all the items in the players contents
-
-						winset(src, "EQUIP.WEAPONS", "current-cell=1,[++I]")	//Add multiple cells horizontally for each obj
-						src << output(O, "EQUIP.WEAPONS")//Send the obj's in src.contents to the Grid
+						if(O.CHARACTER_LOCK=="[P.name]" || O.CHARACTER_LOCK==null)
+							if(O.EQUIPPED_BY == "[P.name]" || O.EQUIPPED_BY == null)
+								winset(src, "EQUIP.WEAPONS", "current-cell=1,[++I]")	//Add multiple cells horizontally for each obj
+								src << output(O, "EQUIP.WEAPONS")//Send the obj's in src.contents to the Grid
 					winset(src,"EQUIP.WEAPONS", "cells=[I]")//Set the amount of cells to the amount within I
 					for(var/EQUIPMENT/ARMOR/R in src.Equipment)//Loop through all the items in the players contents
-
-						winset(src, "EQUIP.ARMOR", "current-cell=1,[++A]")	//Add multiple cells horizontally for each obj
-						src << output(R, "EQUIP.ARMOR")//Send the obj's in src.contents to the Grid
+						if(R.CHARACTER_LOCK=="[P.name]" || R.CHARACTER_LOCK==null)
+							if(R.EQUIPPED_BY == "[P.name]" || R.EQUIPPED_BY == null)
+								winset(src, "EQUIP.ARMOR", "current-cell=1,[++A]")	//Add multiple cells horizontally for each obj
+								src << output(R, "EQUIP.ARMOR")//Send the obj's in src.contents to the Grid
 					winset(src,"EQUIP.ARMOR", "cells=[A]")//Set the amount of cells to the amount within I
 					return
 		EquipSet()

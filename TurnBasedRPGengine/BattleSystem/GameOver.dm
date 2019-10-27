@@ -1,5 +1,7 @@
 
 
+
+
 mob
 	proc
 		GameOver()
@@ -24,7 +26,6 @@ mob
 					P.icon_state="Stance"
 					P.timer=0
 					src.Alives.Remove(P)
-
 					P.overlays-=/obj/ARROW
 					P.overlays-=/obj/CIRCLE
 					P.Start_Ailment(STATUS="Cure")
@@ -59,8 +60,8 @@ mob
 			var/Party_Members/quote=pick(src.Party)
 			src<<sound(quote.win_sound)
 			for(var/Party_Members/P in src.Party)
-				if(P.icon_state=="Dead") continue
-				P.icon_state="Win"
+				if(P.icon_state!="Dead")
+					P.icon_state="Win"
 				P.IN_BATTLE=0
 				P.timer=0
 				P.overlays-=/obj/ARROW

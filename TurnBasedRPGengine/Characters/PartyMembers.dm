@@ -32,6 +32,8 @@ Party_Members
 		BOLTRESIST_ADDED = 0
 		EARTH_RESIST = 1
 		EARTHRESIST_ADDED = 0
+		WEAPON_WEIGHT = 0
+		ARMOR_WEIGHT = 0
 		EXP = 0
 		MAX_EXP = 564
 		LEVEL = 3
@@ -91,7 +93,7 @@ Party_Members
 		//battle calcs
 
 	DblClick()
-		Start_Ailment("Poison")
+		//Start_Ailment("Poison")
 		if(usr.managing==1)
 			if(src.Party_Position==0)
 				for(var/Party_Members/P1 in usr.Party)
@@ -104,6 +106,7 @@ Party_Members
 				usr<<equip
 				usr<<sound(src.ready_sound)
 				src.Party_Position=1
+				usr.icon = file("Overworld/Characters/[src.name].dmi")
 				usr.Manage()
 				return
 
@@ -443,8 +446,11 @@ Party_Members
 
 		Timer()
 			if(!dead&&IN_BATTLE&&!paused)
-				spawn(timer_wait)
-					timer += timer_fill
+				spawn(5+ARMOR_WEIGHT)
+					var/A = 10-WEAPON_WEIGHT
+					if(A <=5)
+						A=6
+					timer += A
 					for(var/mob/M in world)
 						if(M.client&&M.IN_BATTLE)
 							if(src in M.Party)

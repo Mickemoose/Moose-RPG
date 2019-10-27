@@ -53,7 +53,7 @@ ENEMY
 												if(prob(15))
 													Miss()
 												else
-													if(prob(75))
+													if(prob(80))
 														Attack()
 													else
 														if(E_Skills.len != 0 && !E.skilling && E.can_skill && E.name!="Metool")
@@ -147,7 +147,7 @@ ENEMY
 				else
 					if(P.WEAPON_TYPE=="GUN")
 						P.clicked=1
-						P.x+=4
+						P.x+=2
 						spawn(1)
 							if(P.icon_state!="Slime-[P.name]")
 								flick("Shoot",P)
@@ -178,7 +178,7 @@ ENEMY
 													pixel_x=0
 													animate(src,color=rgb(255,255,255),time=3)
 								spawn(4)
-									P.x-=4
+									P.x-=2
 									P.pixel_y=-30
 									P.pixel_y=-25
 									var/damage=P.STRENGTH*rand(1,1.25)+P.ACC_ADDED-DEFENSE/2
@@ -208,13 +208,13 @@ ENEMY
 									src.attacking=0
 									Turn_End(P)
 							else
-								x+=4
+								x+=2
 								spawn(2)
 									usr<<shoot
 								spawn(3)
 									usr<<miss
 								spawn(4)
-									x-=4
+									x-=2
 									P.x-=4
 									P.pixel_y=-30
 									P.pixel_y=-25
@@ -273,7 +273,7 @@ ENEMY
 										new/effect/damage(src.loc,"<font color=red><b>[round(damage)]</b></font>")
 										damage=damage*2
 										HEALTH-=damage
-									if(src.IMMUNE_TO_PHYS==1&&P.ATTACK_ELEMENT!="NONE")
+									if(src.IMMUNE_TO_PHYS==1&&P.ATTACK_ELEMENT=="NONE")
 										new/effect/damage(src.loc,"<font color=white><b>0</b></font>")
 										HEALTH-=0
 									if(HEALTH<=0)
@@ -292,13 +292,13 @@ ENEMY
 									src.attacking=0
 									Turn_End(P)
 							else
-								x+=4
+								x+=2
 								spawn(1)
 									usr<<miss
 								spawn(2)
 									usr<<miss
 								spawn(5)
-									x-=4
+									x-=2
 									P.x-=6
 									P.pixel_y=-30
 									P.pixel_y=-25
@@ -361,6 +361,7 @@ ENEMY
 		GOLD_GAIN = 25
 		New()
 			E_Skills.Add(new/E_SKILL/SAIBA)
+			E_Skills.Add(new/E_SKILL/ACID)
 	GAMMA
 		name="E-102 Gamma"
 		icon='Enemies/Baddies64.dmi'
@@ -381,6 +382,20 @@ ENEMY
 		STRENGTH = 6
 		DEFENSE = 2
 		GOLD_GAIN = 45
+		WEAK_TO = "WATER"
+	SLIME
+		name="Slime"
+		icon='Enemies/Baddies1.dmi'
+		icon_state="SLIME"
+		HEALTH = 30
+		EXP_GAIN = 32
+		STRENGTH = 6
+		DEFENSE = 0
+		GOLD_GAIN = 25
+		STATUS_GIVE = "Slime"
+		STATUS_PERCENT = 4
+		WEAK_TO = "SLIME"
+
 
 	BOSS
 		GROUDON
@@ -398,7 +413,7 @@ ENEMY
 			dead=1
 			animate(src,color=rgb(255,0,0),time=3)
 			animate(src,transform=matrix()*1.5,alpha=0,color=rgb(255,0,0),time=5)
-			view()<<enemy_kill
+			killer<<enemy_kill
 			killer.ENEMY_NUMBER--
 			killer.Battlers.Remove(src)
 			killer.DropCheck(src)
@@ -454,7 +469,7 @@ ENEMY
 							Target.HEALTH-=damage
 							if(prob(STATUS_PERCENT))
 								Target.Start_Ailment(STATUS="[STATUS_GIVE]")
-							HPUpdate()
+							M.HPUpdate()
 							if(Target.HEALTH<=0)
 								Target.dead=1
 								M<<sound(Target.dead_sound)
@@ -464,10 +479,10 @@ ENEMY
 										return
 									else
 										Turn_End(Target)
-								StatUpdate()
-								HPUpdate()
-							StatUpdate()
-						spawn(14)
+								M.StatUpdate()
+								M.HPUpdate()
+							M.StatUpdate()
+						spawn(16)
 							attacking=0
 
 

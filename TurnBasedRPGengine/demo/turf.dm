@@ -7,6 +7,7 @@ turf
 	cliff
 		icon_state="cliff"
 		density=1
+		density=1
 	grassedge
 		icon_state="grassedge"
 		layer=2
@@ -24,12 +25,16 @@ turf
 		density=1
 	water
 		icon_state="water"
+		density=1
 	waterfall
 		icon_state="waterfall"
+		density=1
 	waterfallend
 		icon_state="waterfallend"
+		density=1
 	waterfallshort
 		icon_state="waterfallshort"
+		density=1
 	woodbridge
 		icon_state="woodbridge"
 	SKyBAckground

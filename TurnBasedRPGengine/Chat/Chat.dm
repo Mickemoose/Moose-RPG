@@ -61,11 +61,19 @@ obj
 mob
 	var/info_active=0
 	proc
-		Info(msg="MESSAGE HERE")
+		Info(msg="MESSAGE HERE", color="red")
 			if(info_active)
 				for(var/obj/INFOBOX/C4 in src.client.screen)
 					del(C4)
 				var/obj/INFOBOX/C2=new/obj/INFOBOX(usr.client)
+				if(color=="red")
+					C2.icon_state=null
+				if(color=="blue")
+					C2.icon_state="blue"
+				if(color=="green")
+					C2.icon_state="green"
+				if(color=="black")
+					C2.icon_state="black"
 				animate(C2, transform = matrix()*0, time = 0.1)
 				animate(C2, transform = matrix()*1, time = 3)
 				for(var/obj/INFOBOX/C3 in usr.client.screen)
@@ -76,6 +84,14 @@ mob
 			if(!info_active)
 				info_active=1
 				var/obj/INFOBOX/C2=new/obj/INFOBOX(usr.client)
+				if(color=="red")
+					C2.icon_state=null
+				if(color=="blue")
+					C2.icon_state="blue"
+				if(color=="green")
+					C2.icon_state="green"
+				if(color=="black")
+					C2.icon_state="black"
 				animate(C2, transform = matrix()*0, time = 0.1)
 				animate(C2, transform = matrix()*1, time = 3)
 				for(var/obj/INFOBOX/C3 in usr.client.screen)

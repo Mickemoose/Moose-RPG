@@ -1,19 +1,19 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1546077124
-DIR: BattleSystem BattleSystem\Skills BattleSystem\Skills\HoOh BattleSystem\Skills\Lugia Characters Characters\Derek\Equipment Characters\Portraits Chat Enemies Enemies\Bosses Equipment Equipment\Head Equipment\Mask Equipment\Outfit Equipment\Sets Equipment\Sets\Lugia 
+LAST_COMPILE_TIME: 1572152393
+DIR: Overworld\Characters BattleSystem BattleSystem\Skills BattleSystem\Skills\HoOh BattleSystem\Skills\Lugia Characters Characters\Derek\Equipment Chat demo Enemies Equipment\Sets\Boo Equipment\Sets\HoOh Equipment\Sets\Lugia Items Overworld Overworld\Characters 
 PACKAGE_RSC_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_rsc.zip
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_src.zip
-LAST_COMPILE_VERSION: 512.1462
+LAST_COMPILE_VERSION: 512.1488
 PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
-WINDOW: Equipment\Outfit\LugiaArmor.dmi;Equipment\Outfit\GammaOutfit.dmi;Equipment\Outfit\PaladinUniform.dmi;Equipment\Outfit\PrazonUniform.dmi;Equipment\Outfit\ShinraFirstClass.dmi;Equipment\Outfit\ShinraSecondClass.dmi;Equipment\Mask\Glasses.dmi;Equipment\Outfit\TempestraGarb.dmi;Equipment\Sets\Lugia\Helm.dmi;BattleSystem\Skills\Lugia\Lugia.dmi;Characters\BaseMaleWhite.dmi;Characters\BaseFemaleWhite.dmi
+WINDOW: BattleSystem\Ailments.dm;Enemies\E-Skills.dm;BattleSystem\Skills\Poison.dm;BattleSystem\Skills\HoOh\Skill.dm;BattleSystem\Skills\Lugia\Skill.dm;BattleSystem\Skills\HoOh\HoOh.dmi;Enemies\Enemies.dm;WorldMusic.dm;Overworld\Turf.dm;demo\turf.dm;Overworld\Characters\Laundry.dmi;Chat\Menu.dm;Characters\PartyMembers.dm;Overworld\Characters\Hunter.dmi;Overworld\Characters\Becca.dmi
 PACKAGE_DME_INFO: 
-FILE: Equipment\Sets\Lugia\Helm.dmi
+FILE: Overworld\Characters\Hunter.dmi
 PACKAGE_DMB_NAME: C:\Users\DerekMY\Desktop\WolfPackRPGSandbox.zip
 PACKAGE_DME_DEMO: 
 */

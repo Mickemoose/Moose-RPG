@@ -3,3 +3,5 @@ BATTLE_BACKGROUNDS
 	density=0
 	Night_Duel
 		icon='BattleSystem/Backgrounds/NIGHTDUEL.dmi'
+	Rocky_Plains
+		icon='BattleSystem/Backgrounds/RockyPlains.dmi'

@@ -1,0 +1,9 @@
+obj
+	FX
+		POISON
+			icon='BattleSystem/Effects/Poison.dmi'
+			layer=EFFECTS_LAYER
+			New()
+				view()<<poison
+				spawn(10)
+					del(src)

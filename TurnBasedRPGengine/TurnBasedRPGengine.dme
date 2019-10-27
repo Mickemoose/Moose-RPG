@@ -32,6 +32,7 @@
 #include "BattleSystem\PVP_Initialize.dm"
 #include "BattleSystem\Ready.dm"
 #include "BattleSystem\Backgrounds\Backgrounds.dm"
+#include "BattleSystem\Skills\Poison.dm"
 #include "BattleSystem\Skills\HoOh\Skill.dm"
 #include "BattleSystem\Skills\Lugia\Skill.dm"
 #include "Characters\PartyMembers.dm"

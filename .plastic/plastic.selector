@@ -1,0 +1,4 @@
+repository "MooseRPG@cachegrabcorp@cloud"
+  path "/"
+    br "/main"
+    co "/main"

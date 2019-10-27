@@ -122,6 +122,36 @@ mob
 							E.loc=usr.loc
 							del(E)
 				Equipment.Add(new/EQUIPMENT/WEAPONS/Boo_Axe)
+			if(usr.Recipe_Selected=="Slime Slayer")
+				for(num=0, num<10, num++)
+					for(var/MATERIALS/SLIME/GOOP/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<2, num++)
+					for(var/MATERIALS/SLIME/EYE/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/WEAPONS/Slime_Slayer)
 			if(usr.Recipe_Selected=="Boo Armor")
 				for(num=0, num<2, num++)
 					for(var/MATERIALS/BOO/ECTOPLASM/E in usr.Materials)
@@ -609,3 +639,22 @@ RECIPES
 									for(var/MATERIALS/GAMMA/FUEL/E4 in usr.Materials)
 										if(E4.contents.len+1>=1)
 											winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Slime_Slayer
+		icon_state="weapon"
+		DisplayIcon='Equipment/Weapon/SlimeSword.dmi'
+		Ingredient_1="/10 Slime Goop"
+		Ingredient_2="/2 Uncanny Eye"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/SLIME/GOOP/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/SLIME/EYE/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			winset(usr,"CRAFT.In3","text=''")
+			winset(usr,"CRAFT.In4","text=''")
+			for(var/MATERIALS/SLIME/GOOP/E in usr.Materials)
+				if(E.contents.len+1>=10)
+					for(var/MATERIALS/SLIME/EYE/E2 in usr.Materials)
+						if(E2.contents.len+1>=2)
+							winset(usr,"CRAFT.CraftButton","is-visible=true")

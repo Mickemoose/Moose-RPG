@@ -11,6 +11,7 @@ DESTINATIONS
 	Bridgecrest
 		Entered(mob/m)
 			if(m.client)
+				m.IN_SAFE=1
 				m<<sound(null)
 				fade.Map(m, 255, 16, 8)
 				spawn(7)
@@ -34,11 +35,12 @@ DESTINATIONS
 				fade.Map(m, 255, 16, 8)
 				spawn(7)
 					m.loc=locate(40,106,1)
-					m.IN_SAFE=0
 					m.Save()
 					m<<realm
 					fade.Map(m, 0, 16, 8)
 					m.Info(msg="Realm of Woofpakia")
+					spawn(12)
+						m.IN_SAFE=0
 					spawn(18)
 						for(var/obj/INFOBOX/C2 in m.client.screen)
 							Maptext(C2, "", "white", add_outline = 0)

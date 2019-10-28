@@ -589,6 +589,7 @@ window "ITEMS"
 		size = 472x504
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -815,6 +816,7 @@ window "ITEMS"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "KEY ITEMS"
@@ -854,6 +856,7 @@ window "ITEMS"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
+		background-color = none
 		is-transparent = true
 		saved-params = ""
 		text = "ITEMS"
@@ -1234,7 +1237,6 @@ window "Manage"
 		size = 472x504
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1386,7 +1388,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1401,7 +1402,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1416,7 +1416,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1431,7 +1430,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1446,7 +1444,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1461,7 +1458,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1476,7 +1472,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 14
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -1491,7 +1486,6 @@ window "Manage"
 		font-family = "NEStalgic8"
 		font-size = 12
 		text-color = #ffffff
-		background-color = none
 		is-visible = false
 		is-transparent = true
 		saved-params = ""
@@ -2424,6 +2418,148 @@ window "PARTY_ITEMUSE"
 		saved-params = ""
 		text = ""
 
+window "STORE"
+	elem "STORE"
+		type = MAIN
+		pos = 281,0
+		size = 952x784
+		anchor1 = none
+		anchor2 = none
+		background-color = #b70000
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		transparent-color = #ff80ff
+	elem "MSG"
+		type = LABEL
+		pos = 408,582
+		size = 128x96
+		anchor1 = 43,85
+		anchor2 = 56,100
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #363636
+		background-color = #b70000
+		is-visible = false
+		is-transparent = true
+		saved-params = ""
+		text = "TEST"
+		image = 'Chat\\NPCs\\Box.dmi'
+	elem "MERCH"
+		type = LABEL
+		pos = 408,663
+		size = 128x128
+		anchor1 = 43,85
+		anchor2 = 56,100
+		background-color = #b70000
+		is-transparent = true
+		saved-params = ""
+		text = ""
+	elem "label11"
+		type = LABEL
+		pos = 686,60
+		size = 240x20
+		anchor1 = 72,8
+		anchor2 = 97,10
+		font-family = "NEStalgic8"
+		font-size = 18
+		text-color = #ffffff
+		background-color = none
+		is-transparent = true
+		saved-params = ""
+		text = "Inventory"
+		align = left
+	elem "label9"
+		type = LABEL
+		pos = 120,52
+		size = 240x20
+		anchor1 = 13,7
+		anchor2 = 38,9
+		font-family = "NEStalgic8"
+		font-size = 18
+		text-color = #ffffff
+		background-color = none
+		is-transparent = true
+		saved-params = ""
+		text = "General Store"
+		align = left
+	elem "playerINV"
+		type = GRID
+		pos = 592,88
+		size = 304x544
+		anchor1 = 62,11
+		anchor2 = 94,81
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = ""
+		cells = 1x1
+		current-cell = 1,1
+		show-lines = none
+		highlight-color = #b70000
+	elem "storeINV"
+		type = GRID
+		pos = 56,80
+		size = 304x544
+		anchor1 = 6,10
+		anchor2 = 38,80
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
+		background-color = #000000
+		saved-params = ""
+		cells = 1x1
+		current-cell = 1,1
+		show-lines = none
+		highlight-color = #18eb0e
+	elem "button12"
+		type = BUTTON
+		pos = 832,724
+		size = 108x52
+		anchor1 = none
+		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 14
+		text-color = #ffffff
+		background-color = #b70000
+		border = line
+		saved-params = "is-checked"
+		text = "Close"
+		command = "CloseStore"
+		is-flat = true
+	elem "MONEY"
+		type = LABEL
+		pos = 48,711
+		size = 240x20
+		anchor1 = 5,91
+		anchor2 = 30,93
+		font-family = "NEStalgic8"
+		font-size = 18
+		text-color = #ffffff
+		background-color = none
+		is-transparent = true
+		saved-params = ""
+		text = "00000"
+		align = left
+	elem "label10"
+		type = LABEL
+		pos = 32,704
+		size = 17x33
+		anchor1 = 3,90
+		anchor2 = 5,94
+		font-family = "NEStalgic8"
+		font-size = 18
+		text-color = #65ec5e
+		background-color = #b70000
+		saved-params = ""
+		text = "$"
+		align = left
+
 window "TIME"
 	elem "TIME"
 		type = MAIN
@@ -2442,38 +2578,54 @@ window "TIME"
 		image = 'Chat\\Time.dmi'
 	elem "CLOCK"
 		type = LABEL
-		pos = 33,40
-		size = 99x20
+		pos = 84,44
+		size = 76x20
 		anchor1 = none
 		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
 		background-color = none
+		is-transparent = true
 		saved-params = ""
 		text = ""
 	elem "DAYNUM"
 		type = LABEL
-		pos = 135,10
+		pos = 115,8
 		size = 21x20
 		anchor1 = none
 		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
 		background-color = none
+		is-transparent = true
 		saved-params = ""
 		text = ""
 	elem "MONTH"
 		type = LABEL
-		pos = 72,10
+		pos = 50,8
 		size = 60x20
 		anchor1 = none
 		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
 		background-color = none
+		is-transparent = true
 		saved-params = ""
 		text = ""
 	elem "DAY"
 		type = LABEL
-		pos = 9,10
-		size = 60x20
+		pos = 7,44
+		size = 75x20
 		anchor1 = none
 		anchor2 = none
+		font-family = "NEStalgic8"
+		font-size = 12
+		text-color = #ffffff
 		background-color = none
+		is-transparent = true
 		saved-params = ""
 		text = ""
 
@@ -2501,7 +2653,7 @@ window "default"
 		zoom = 1
 	elem "TIME"
 		type = CHILD
-		pos = 535,25
+		pos = 1689,24
 		size = 167x74
 		anchor1 = none
 		anchor2 = none
@@ -2533,4 +2685,26 @@ window "default"
 		saved-params = "is-checked"
 		text = "Host"
 		command = ".host"
+	elem "storeoutline"
+		type = CHILD
+		pos = 472,56
+		size = 968x800
+		anchor1 = 25,6
+		anchor2 = 76,87
+		background-color = #ffffff
+		is-visible = false
+		saved-params = "splitter"
+		right = "STORE"
+		is-vert = false
+	elem "store"
+		type = CHILD
+		pos = 480,64
+		size = 952x784
+		anchor1 = 25,7
+		anchor2 = 75,86
+		background-color = #ff0000
+		is-visible = false
+		saved-params = "splitter"
+		right = "STORE"
+		is-vert = false
 

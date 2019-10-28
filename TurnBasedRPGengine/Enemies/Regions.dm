@@ -11,10 +11,11 @@ mob
 			if(Region==1)
 				if(prob(2))
 					src.Battle_Start(enemy=Region,enemy_count=pick(
-						1,
 					prob(50)
+						1,
+					prob(60)
 						2,
-					prob(100)
+					prob(40)
 						3))
 			else
 				return

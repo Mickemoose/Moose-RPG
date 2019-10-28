@@ -5,7 +5,7 @@ mob
 				if(!IN_BATTLE)
 					Info("Auto Saving...")
 					Save()
-					WorldSave()
+				//	WorldSave()
 					spawn(18)
 						for(var/obj/INFOBOX/C2 in client.screen)
 							Maptext(C2, "", "white", add_outline = 0)
@@ -26,6 +26,13 @@ mob/proc
 			F["entryy"] << D.entryy
 			F["entryz"] << D.entryz
 			F["status"] << D.status
+		for(var/obj/Time/T in world)
+			F["day"] << T.day
+			F["daynum"] << T.dayNum
+			F["minute"] << T.minute
+			F["month"] << T.season
+			F["hour"] << T.hour
+			F["CurrentTimeOfDay"] << T.cTOD
 		usr.client.Export(F)
 	WorldLoad()
 		if(fexists("Savefiles/WORLD.sav")) // if there is a file
@@ -40,9 +47,18 @@ mob/proc
 				F["entryy"] >> D.entryy
 				F["entryz"] >> D.entryz
 				F["status"] >> D.status
+			for(var/obj/Time/T in world)
+				F["day"] >> T.day
+				F["daynum"] >> T.dayNum
+				F["minute"] >> T.minute
+				F["month"] >> T.season
+				F["hour"] >> T.hour
+				F["CurrentTimeOfDay"] >> T.cTOD
+				T.ForceDayCheck()
 mob
 	proc // tell it evry thing below is a proc
 		Save() // name the proc
+			WorldSave()
 			var/savefile/F = new("Savefiles/[src.key].sav") // tell it to make a updated savefile
 			F["first_login"] << src.first_login
 			F["Party"] << src.Party
@@ -64,8 +80,48 @@ mob
 			F["Materials"] << src.Materials
 			for(var/EQUIPMENT/ARMOR/E in src.Equipment)
 				F["EQUIPPED"] << E.EQUIPPED
+				F["EQUIPPED_BY"] << E.EQUIPPED_BY
 			for(var/EQUIPMENT/WEAPONS/E in src.Equipment)
 				F["EQUIPPED"] << E.EQUIPPED
+				F["EQUIPPED_BY"] << E.EQUIPPED_BY
+			for(var/Party_Members/P in src.Reserves)
+				F["LEVEL"] << P.LEVEL
+				F["HEALTH"] << P.HEALTH
+				F["MAX_HEALTH"] << P.MAX_HEALTH
+				F["MAGIC"] << P.MAGIC
+				F["MAX_MAGIC"] << P.MAX_MAGIC
+				F["EXP"] << P.EXP
+				F["MAX_EXP"] << P.MAX_EXP
+				F["OVERLAYS"] << P.overlays
+				F["SKILL1"] << P.SKILL1
+				F["SKILL2"] << P.SKILL2
+				F["SKILL3"] << P.SKILL3
+				F["WEAPON_TYPE"] << P.WEAPON_TYPE
+				F["WEAPON_SLOT"] << P.WEAPON_SLOT
+				F["HEAD_SLOT"] << P.HEAD_SLOT
+				F["head_overlay"] << P.head_overlay
+				F["HAIR_SLOT"] << P.HAIR_SLOT
+				F["hair_overlay"] << P.hair_overlay
+				F["ATTACK_ELEMENT"] << P.ATTACK_ELEMENT
+				F["MASK_SLOT"] << P.MASK_SLOT
+				F["mask_overlay"] << P.mask_overlay
+				F["OUTFIT_SLOT"] >> P.OUTFIT_SLOT
+				F["outfit_overlay"] << P.outfit_overlay
+				F["STRENGTH"] << P.STRENGTH
+				F["DEFENSE"] << P.DEFENSE
+				F["ACCURACY"] << P.ACCURACY
+				F["FIRE_RESIST"] << P.FIRE_RESIST
+				F["POISON_RESIST"] << P.POISON_RESIST
+				F["STRENGTH_ADDED"] << P.STRENGTH_ADDED
+				F["DEFENSE_ADDED"] << P.DEFENSE_ADDED
+				F["ACC_ADDED"] << P.ACC_ADDED
+				F["POIRESIST_ADDED"] << P.POIRESIST_ADDED
+				F["FIRERESIST_ADDED"] << P.FIRERESIST_ADDED
+				F["mask_overlay"] << P.mask_overlay
+				F["eye_overlay"] << P.eye_overlay
+				F["EYE_SLOT"] << P.EYE_SLOT
+				F["weapon_overlay"] << P.weapon_overlay
+				F["Party_Position"] << P.Party_Position
 			for(var/Party_Members/P in src.Party)
 				if(P.Party_Position==1)
 					F["P1-LEVEL"] << P.LEVEL
@@ -248,8 +304,48 @@ mob
 				F["Materials"] >> src.Materials
 				for(var/EQUIPMENT/ARMOR/E in src.Equipment)
 					F["EQUIPPED"] >> E.EQUIPPED
+					F["EQUIPPED_BY"] >> E.EQUIPPED_BY
 				for(var/EQUIPMENT/WEAPONS/E in src.Equipment)
 					F["EQUIPPED"] >> E.EQUIPPED
+					F["EQUIPPED_BY"] >> E.EQUIPPED_BY
+				for(var/Party_Members/P in src.Reserves)
+					F["LEVEL"] >> P.LEVEL
+					F["HEALTH"] >> P.HEALTH
+					F["MAX_HEALTH"] >> P.MAX_HEALTH
+					F["MAGIC"] >> P.MAGIC
+					F["MAX_MAGIC"] >> P.MAX_MAGIC
+					F["EXP"] >> P.EXP
+					F["MAX_EXP"] >> P.MAX_EXP
+					F["OVERLAYS"] >> P.overlays
+					F["SKILL1"] >> P.SKILL1
+					F["SKILL2"] >> P.SKILL2
+					F["SKILL3"] >> P.SKILL3
+					F["WEAPON_TYPE"] >> P.WEAPON_TYPE
+					F["WEAPON_SLOT"] >> P.WEAPON_SLOT
+					F["HEAD_SLOT"] >> P.HEAD_SLOT
+					F["head_overlay"] >> P.head_overlay
+					F["HAIR_SLOT"] >> P.HAIR_SLOT
+					F["hair_overlay"] >> P.hair_overlay
+					F["ATTACK_ELEMENT"] >> P.ATTACK_ELEMENT
+					F["MASK_SLOT"] >> P.MASK_SLOT
+					F["mask_overlay"] >> P.mask_overlay
+					F["OUTFIT_SLOT"] >> P.OUTFIT_SLOT
+					F["outfit_overlay"] >> P.outfit_overlay
+					F["STRENGTH"] >> P.STRENGTH
+					F["DEFENSE"] >> P.DEFENSE
+					F["ACCURACY"] >> P.ACCURACY
+					F["FIRE_RESIST"] >> P.FIRE_RESIST
+					F["POISON_RESIST"] >> P.POISON_RESIST
+					F["STRENGTH_ADDED"] >> P.STRENGTH_ADDED
+					F["DEFENSE_ADDED"] >> P.DEFENSE_ADDED
+					F["ACC_ADDED"] >> P.ACC_ADDED
+					F["POIRESIST_ADDED"] >> P.POIRESIST_ADDED
+					F["FIRERESIST_ADDED"] >> P.FIRERESIST_ADDED
+					F["mask_overlay"] >> P.mask_overlay
+					F["eye_overlay"] >> P.eye_overlay
+					F["EYE_SLOT"] >> P.EYE_SLOT
+					F["weapon_overlay"] >> P.weapon_overlay
+					F["Party_Position"] >> P.Party_Position
 				for(var/Party_Members/P in src.Party)
 					if(P.Party_Position==1)
 						F["P1-LEVEL"] >> P.LEVEL

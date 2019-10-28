@@ -46,6 +46,7 @@ Party_Members
 		ENABLE_MAGIC = 0
 
 		ready = 0
+		stone=0
 		timer = 0
 		timer_fill = 5
 		timer_wait = 5

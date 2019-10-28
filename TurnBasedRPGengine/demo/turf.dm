@@ -53,6 +53,7 @@ obj
 		icon='NewTurfs/objects128.dmi'
 		Tree
 			icon_state="Tree"
+			density=1
 	Objects64
 		icon='NewTurfs/objects64.dmi'
 		Fountain

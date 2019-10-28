@@ -562,6 +562,22 @@ mob
 
 				for(var/BATTLE_STATS/HEALTH/H1 in src.client.screen)
 					for(var/Party_Members/P in src.Party)
+						if(P.stone)
+							if(src.TURN==P)
+								src.Turn_End(P)
+							P.icon_state="Stance"
+							src.Alives.Remove(P)
+							src.Wait_List.Remove(P)
+							if(src.Alives.len<=0)
+								src.GameOver()
+							for(var/BATTLE_STATS/NAME/N1 in src.client.screen)
+								if(N1.owner==P)
+									Maptext(N1, "<font size=3>[P.name]", "black", add_outline = 0)
+							if(H1.owner==P)
+								Maptext(H1, "<font size=3><b>HP:</b> [P.HEALTH]/[P.MAX_HEALTH]", "black", add_outline = 0)
+						else
+							if(H1.owner==P)
+								Maptext(H1, "<font size=3><b>HP:</b> [P.HEALTH]/[P.MAX_HEALTH]", "white", add_outline = 0)
 						if(P.dead)
 							P.Start_Ailment(STATUS="Cure")
 							if(src.TURN==P)
@@ -728,6 +744,8 @@ mob
 
 			if(src.IN_BATTLE)
 				src<<ready
+				player.attacking=0
+				player.iteming=0
 				new/BATTLE_BUTTONS/Attack(src.client)
 				new/BATTLE_BUTTONS/Items(src.client)
 				var/BATTLE_BUTTONS/Cancel/C=new/BATTLE_BUTTONS/Cancel(src.client)

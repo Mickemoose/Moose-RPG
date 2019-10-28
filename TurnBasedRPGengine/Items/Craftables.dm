@@ -488,6 +488,122 @@ mob
 							del(E)
 
 				Equipment.Add(new/EQUIPMENT/WEAPONS/Sacred_Blade)
+			if(usr.Recipe_Selected=="Acid Cutter")
+				for(num=0, num<6, num++)
+					for(var/MATERIALS/SAIBAMEN/LEATHER/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<2, num++)
+					for(var/MATERIALS/SAIBAMEN/SEED/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/SAIBAMEN/ACID/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/SAIBAMEN/BOOM/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/WEAPONS/Acid_Cutter)
+			if(usr.Recipe_Selected=="Saiba Helmet")
+				for(num=0, num<4, num++)
+					for(var/MATERIALS/SAIBAMEN/LEATHER/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/SAIBAMEN/SEED/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<4, num++)
+					for(var/MATERIALS/SAIBAMEN/ACID/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<3, num++)
+					for(var/MATERIALS/SAIBAMEN/BOOM/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/ARMOR/HEAD/Saiba_Helmet)
 
 
 RECIPES
@@ -743,3 +859,57 @@ RECIPES
 					for(var/MATERIALS/SLIME/EYE/E2 in usr.Materials)
 						if(E2.contents.len+1>=2)
 							winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Saiba_Helmet
+		icon_state="helm"
+		DisplayIcon='Equipment/Sets/Saiba/Helm.dmi'
+		Ingredient_1 ="/4 Saibamen Leather"
+		Ingredient_2 ="/1 Saiba Seed"
+		Ingredient_3 ="/3 Volatile Mixture"
+		Ingredient_4 ="/4 Highly Toxic Acid"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/SAIBAMEN/LEATHER/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/SAIBAMEN/SEED/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			for(var/MATERIALS/SAIBAMEN/BOOM/E in usr.Materials)
+				winset(usr,"CRAFT.In3","text='[E.suffix][src.Ingredient_3]'")
+			for(var/MATERIALS/SAIBAMEN/ACID/E in usr.Materials)
+				winset(usr,"CRAFT.In4","text='[E.suffix][src.Ingredient_4]'")
+			for(var/MATERIALS/SAIBAMEN/LEATHER/E in usr.Materials)
+				if(E.contents.len+1>=4)
+					for(var/MATERIALS/SAIBAMEN/SEED/E2 in usr.Materials)
+						if(E2.contents.len+1>=1)
+							for(var/MATERIALS/SAIBAMEN/BOOM/E3 in usr.Materials)
+								if(E3.contents.len+1>=3)
+									for(var/MATERIALS/SAIBAMEN/ACID/E4 in usr.Materials)
+										if(E4.contents.len+1>=4)
+											winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Acid_Cutter
+		icon_state="weapon"
+		DisplayIcon='Equipment/Weapon/SaibaSword.dmi'
+		Ingredient_1 ="/6 Saibamen Leather"
+		Ingredient_2 ="/2 Saiba Seed"
+		Ingredient_3 ="/1 Volatile Mixture"
+		Ingredient_4 ="/1 Highly Toxic Acid"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/SAIBAMEN/LEATHER/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/SAIBAMEN/SEED/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			for(var/MATERIALS/SAIBAMEN/BOOM/E in usr.Materials)
+				winset(usr,"CRAFT.In3","text='[E.suffix][src.Ingredient_3]'")
+			for(var/MATERIALS/SAIBAMEN/ACID/E in usr.Materials)
+				winset(usr,"CRAFT.In4","text='[E.suffix][src.Ingredient_4]'")
+			for(var/MATERIALS/SAIBAMEN/LEATHER/E in usr.Materials)
+				if(E.contents.len+1>=6)
+					for(var/MATERIALS/SAIBAMEN/SEED/E2 in usr.Materials)
+						if(E2.contents.len+1>=2)
+							for(var/MATERIALS/SAIBAMEN/BOOM/E3 in usr.Materials)
+								if(E3.contents.len+1>=1)
+									for(var/MATERIALS/SAIBAMEN/ACID/E4 in usr.Materials)
+										if(E4.contents.len+1>=1)
+											winset(usr,"CRAFT.CraftButton","is-visible=true")

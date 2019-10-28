@@ -36,6 +36,12 @@ obj
 					usr.ASKER=null
 
 			del(src)
+	PORTRAIT
+		icon='Chat/Portraits.dmi'
+		layer=997
+		New(client/C)
+			C.screen+=src
+			screen_loc="12,13"
 	CHATBOX
 		icon='Chat/Box.dmi'
 		layer=998
@@ -113,7 +119,7 @@ mob
 				new/obj/NO(src.client)
 
 
-		Message(msg="MESSAGE HERE",timeout=15,location="bottom",type="Chat")
+		Message(msg="MESSAGE HERE",timeout=15,location="bottom",type="Chat",npc=null)
 			if(type=="Chat")
 				if(!chatup)
 					chatup=1
@@ -127,6 +133,52 @@ mob
 							C3.screen_loc="14,20"
 						if(location=="top")
 							C3.screen_loc="14,25"
+					if(npc=="rotht")
+						var/oldmsg=msg
+						msg=" <b>Andrew: </b>[oldmsg]"
+					if(npc=="devon")
+						var/oldmsg=msg
+						msg=" <b>Devon: </b>[oldmsg]"
+					if(npc=="darcy")
+						var/oldmsg=msg
+						msg=" <b>Darcy: </b>[oldmsg]"
+					if(npc!=null)
+						var/obj/PORTRAIT/P=new/obj/PORTRAIT(usr.client)
+						P.screen_loc="14:-12,19:14"
+						spawn(0.5)
+							P.screen_loc="14:-10,19:14"
+							spawn(0.5)
+								P.screen_loc="14:-8,19:14"
+								spawn(0.5)
+									P.screen_loc="14:-6,19:14"
+									spawn(0.5)
+										P.screen_loc="14:-4,19:14"
+										spawn(0.5)
+											P.screen_loc="14:-2,19:14"
+											spawn(0.5)
+												P.screen_loc="14,19:14"
+						animate(P, transform = matrix(), alpha = 0,time = 0.1)
+						//animate(P, transform = matrix(), pixel_x=10,time = 3)
+						animate(P, transform = matrix(), alpha = 255,time = 3)
+						P.icon_state=npc
+						spawn(timeout)
+							P.screen_loc="14,19:14"
+							spawn(0.5)
+								P.screen_loc="14:2,19:14"
+								spawn(0.5)
+									P.screen_loc="14:4,19:14"
+									spawn(0.5)
+										P.screen_loc="14:6,19:14"
+										spawn(0.5)
+											P.screen_loc="14:8,19:14"
+											spawn(0.5)
+												P.screen_loc="14:10,19:14"
+												spawn(0.5)
+													P.screen_loc="14:12,19:14"
+							animate(P, transform = matrix(), alpha = 0, time = 1)
+							spawn(1.4)
+								del(P)
+
 				//	C2.maptext="<font color=white>[msg]"
 					spawn(1.8)
 						Maptext(C2, "[msg]", "white", add_outline = 0)

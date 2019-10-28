@@ -1,9 +1,9 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1572212179
+LAST_COMPILE_TIME: 1572249116
 PACKAGE_RSC_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_rsc.zip
-DIR: BattleSystem BattleSystem\Skills\HoOh Characters\Derek\Equipment Chat Enemies Equipment\Sets\Boo Equipment\Sets\HoOh Overworld\Enemies Overworld\Houses Overworld\Houses\Furnish 
+DIR: BattleSystem\Skills BattleSystem\Skills\HoOh BattleSystem\Skills\Lugia Characters Characters\Derek\Equipment Chat Chat\NPCs demo Enemies Enemies\Bosses Equipment\Head Equipment\Sets Equipment\Sets\Boo Equipment\Sets\HoOh Equipment\Sets\Saiba 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
@@ -12,8 +12,8 @@ LAST_COMPILE_VERSION: 512.1488
 PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
 PACKAGE_DME_INFO: 
-WINDOW: BattleSystem\Buttons.dm;Enemies\Enemies.dm;BattleSystem\miniBar.dmi;BattleSystem\GameOver.dm;BattleSystem\Initialize.dm;TurnBasedRPGengine.dm;BattleSystem\bossBar.dmi;Enemies\Regions.dm;Chat\Questions.dm
-FILE: TurnBasedRPGengine.dm
+WINDOW: Enemies\E-Skills.dm;OVERWORLD.dmm;demo\turf.dm;Dev Tree.dm;SavingLoading.dm;Characters\NPC.dmi;Chat\Portraits.dmi;Chat\NPCs\Box.dmi;Chat\NPCs\Darcy.dmi;Characters\NPC.dm;Chat\Chat.dm;country-platform-back.png
+FILE: OVERWORLD.dmm
 PACKAGE_DME_DEMO: 
 PACKAGE_DMB_NAME: C:\Users\DerekMY\Desktop\WolfPackRPGSandbox.zip
 */

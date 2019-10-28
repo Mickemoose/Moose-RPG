@@ -75,6 +75,27 @@ ENEMY
 			for(var/obj/ENEMY_BAR/E in world)
 				if(E.owner==src)
 					E.Update()
+		Poison()
+			var/ailment_amount=0
+			var/status_flash=0
+			ailment_amount-=pick(1,2,3,4,5,6,7,8,9,10)
+			if(status_flash==0)
+				status_flash =1
+				animate(src, color=rgb(0,200,0), time = 10)
+			if(status_flash==1)
+				status_flash =0
+				animate(src, color=rgb(255,255,255), time = 10)
+			if(ailment_amount<=0)
+				overlays-=/STATUS_AILMENTS/POISON
+				return
+			var/damage=pick(1,2)
+			new/effect/damage(loc,"<font color=purple><b>[round(damage)]</b></font>")
+			HEALTH-=damage
+			if(HEALTH<=0)
+				spawn(2.5)
+					Death(usr,usr)
+			spawn(15)
+				Poison()
 		Active()
 			if(name=="pbag")
 				return
@@ -118,11 +139,11 @@ ENEMY
 							if(src in M.Battlers)
 								for(var/Party_Members/P in M.Party)
 									if(P.attacking)
-										spawn(pick(50))
+										spawn(pick(65))
 											Active()
 								for(var/ENEMY/E in M.Battlers)
 									if(E.attacking||E.skilling)
-										spawn(pick(50))
+										spawn(pick(65))
 											Active()
 									else
 										if(!attacking&&!E.skilling&&!skilling)
@@ -139,10 +160,10 @@ ENEMY
 															ES.Activate(src)
 														else
 															Attack()
-												spawn(pick(50))
+												spawn(pick(65))
 													Active()
 											else
-												spawn(pick(50))
+												spawn(pick(65))
 													Active()
 
 
@@ -429,7 +450,7 @@ ENEMY
 		STATUS_GIVE = "Poison"
 		STATUS_PERCENT = 25
 		New()
-			E_Skills.Add(new/E_SKILL/BOO)
+			E_Skills.Add(new/E_SKILL/BOO,new/E_SKILL/MEDUSA_GAZE)
 			Drops.Add(new/MATERIALS/BOO/ECTOPLASM, new/MATERIALS/BOO/FANG, new/MATERIALS/BOO/SKIN, new/MATERIALS/BOO/TONGUE,)
 	METOOL
 		name="Metool"
@@ -564,7 +585,7 @@ ENEMY
 				for(var/mob/M in world)
 					if(src in M.Battlers)
 						var/Party_Members/Target=pick(M.Party)
-						if(!Target.dead)
+						if(!Target.dead&&!Target.stone)
 							Target.BEING_ATTACKED=1
 							pixel_x+=6
 							spawn(3)
@@ -579,7 +600,7 @@ ENEMY
 				for(var/mob/M in world)
 					if(src in M.Battlers)
 						var/Party_Members/Target=pick(M.Party)
-						if(!Target.dead&&!Target.clicked&&Target.IN_BATTLE&&!Target.attacking)
+						if(!Target.dead&&!Target.clicked&&Target.IN_BATTLE&&!Target.attacking&&!Target.stone)
 							Target.BEING_ATTACKED=1
 							var/spot=loc
 							loc=Target.loc

@@ -35,6 +35,7 @@ var
 		shock = sound('BattleSystem/Skills/Pikachu/shock.wav',volume=30)
 		poison = sound('SOUND FX/poison.wav',volume=30)
 		escape = sound('SOUND FX/escape.wav',volume=30)
+		shop = sound('SOUND FX/shop.wav',volume=30)
 
 		//pikachu soundbank
 

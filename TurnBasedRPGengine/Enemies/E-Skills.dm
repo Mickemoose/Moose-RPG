@@ -22,7 +22,7 @@ E_SKILL
 								del(C2)
 						M<<hooh
 						for(var/Party_Members/Target in M.Party)
-							if(!Target.dead&&Target.IN_BATTLE)
+							if(!Target.dead&&Target.IN_BATTLE&&!Target.stone)
 								new /obj/FX/HOOH/Sunburn(Target.loc)
 								M<<fire
 								M<<hit
@@ -75,7 +75,7 @@ E_SKILL
 								del(C2)
 						M<<hooh
 						var/Party_Members/Target=pick(M.Party)
-						if(!Target.dead&&Target.IN_BATTLE)
+						if(!Target.dead&&Target.IN_BATTLE&&!Target.stone)
 							var/oldlayer=Target.layer
 							Target.layer=EFFECTS_LAYER+1
 							fade.Map(M, 100, 16, 8)
@@ -137,7 +137,7 @@ E_SKILL
 						M<<saiba
 						var/Party_Members/Target=pick(M.Party)
 						new /obj/FX/POISON(Target.loc)
-						if(!Target.dead&&Target.IN_BATTLE)
+						if(!Target.dead&&Target.IN_BATTLE&&!Target.stone)
 							M<<hit
 							Target.pixel_y+=4
 							animate(Target,color=rgb(255,0,0),time=3)
@@ -194,7 +194,7 @@ E_SKILL
 										del(C2)
 
 								spawn(30)
-									if(!usr.dead&&TARGET.GUEST==0&&TARGET.IN_BATTLE)
+									if(!usr.dead&&TARGET.GUEST==0&&TARGET.IN_BATTLE&&!TARGET.stone)
 										M<<saiba
 										M.Info("[TARGET] can't get out of Saibamens Grasp!","blue")
 										usr.invisibility=101
@@ -261,6 +261,31 @@ E_SKILL
 										usr.skilling=0
 									spawn(30)
 										usr.can_skill=1
+	MEDUSA_GAZE
+		name="Medusas Gaze"
+		Activate(ENEMY/usr)
+			for(var/mob/M in world)
+				if(usr in M.Battlers)
+					for(var/ENEMY/E in M.Battlers)
+						if(M.Battlers.len>1)
+							if(!usr.skilling&&usr.can_skill)
+								usr.skilling=1
+								usr.can_skill = 0
+								var/Party_Members/TARGET=pick(M.Alives)
+								M<<BOO
+								M.Info("[usr.name] casts a menacing gaze towards [TARGET]","blue")
+								flick("ATTACK",src)
+								spawn(10)
+									for(var/obj/INFOBOX/C2 in M.client.screen)
+										del(C2)
+									if(prob(50))
+										new/effect/damage(TARGET.loc,"<font color=white><b>MISS</b></font>")
+									else
+										TARGET.Start_Ailment("Petrify")
+									spawn(2)
+										usr.skilling=0
+									spawn(10)
+										usr.can_skill=1
 	BOO
 		name="Boo Hide"
 		Activate(ENEMY/usr)
@@ -319,7 +344,7 @@ E_SKILL
 								view(8)<<blast
 								var/Party_Members/Target=pick(M.Party)
 								new /obj/FX/GAMMA/Blast(Target.loc)
-								if(!Target.dead&&Target.IN_BATTLE)
+								if(!Target.dead&&Target.IN_BATTLE&&!Target.stone)
 									M<<hit
 									Target.pixel_y+=4
 									animate(Target,color=rgb(255,0,0),time=3)

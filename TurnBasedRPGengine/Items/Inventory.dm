@@ -4,6 +4,7 @@ mob
 			KeyItems = list()
 			Equipment = list()
 			Materials = list()
+			MERCH =list()
 			Armor = list()
 			Magic = list()
 			Items = list()
@@ -58,14 +59,23 @@ mob/proc
 	itemDrop(ITEMS/o)
 		if(o.canStack && o.contents.len)
 			var/ITEMS/theItem=pick(o.contents)
-			theItem.loc=src.loc
-			if(o.contents.len)
+
+			if(o.contents.len>1)
+				theItem.loc=locate(10,10,10)
+				spawn(10)
+					del theItem
 				o.suffix="x[o.contents.len+1]"
+			if(o.contents.len==1)
+				theItem.loc=locate(10,10,10)
+				spawn(10)
+					del theItem
+				o.suffix=""
 			else
-				o.suffix="x1"
-		else
-			o.loc=src.loc
-			o.suffix=""
+				o.loc=locate(10,10,10)
+				spawn(10)
+					del o
+
+
 
 	itemAdd(ITEMS/o)
 

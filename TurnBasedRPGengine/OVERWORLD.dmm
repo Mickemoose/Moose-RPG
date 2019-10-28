@@ -17,8 +17,8 @@
 "aq" = (/obj/OVERWORLD/Forest{tag = "icon-0,9"; icon_state = "0,9"},/turf/water,/area)
 "ar" = (/obj/OVERWORLD/Forest{tag = "icon-1,9"; icon_state = "1,9"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/area)
 "as" = (/obj/OVERWORLD/Forest{tag = "icon-1,9"; icon_state = "1,9"},/turf/grass,/REGIONS/Region01)
-"at" = (/obj/OVERWORLD/Forest{tag = "icon-1,9"; icon_state = "1,9"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (EAST)"; icon_state = "cliffgrass"; dir = 4},/REGIONS/Region01)
-"au" = (/obj/OVERWORLD/Forest{tag = "icon-1,9"; icon_state = "1,9"},/turf/water,/REGIONS/Region01)
+"at" = (/obj/OVERWORLD/Forest{tag = "icon-2,9"; icon_state = "2,9"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (EAST)"; icon_state = "cliffgrass"; dir = 4},/REGIONS/Region01)
+"au" = (/obj/OVERWORLD/Forest{tag = "icon-0,9"; icon_state = "0,9"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/area)
 "av" = (/obj/OVERWORLD/Forest{tag = "icon-1,9"; icon_state = "1,9"},/turf/grass,/area)
 "aw" = (/obj/OVERWORLD/Forest{tag = "icon-2,9"; icon_state = "2,9"},/turf/grass,/DESTINATIONS/Bridgecrest)
 "ax" = (/turf/grass,/DESTINATIONS/Bridgecrest)
@@ -28,18 +28,18 @@
 "aB" = (/obj/OVERWORLD/Forest{tag = "icon-0,8"; icon_state = "0,8"},/turf/water,/area)
 "aC" = (/obj/OVERWORLD/Forest,/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/REGIONS/Region01)
 "aD" = (/obj/OVERWORLD/Forest,/turf/grass,/REGIONS/Region01)
-"aE" = (/obj/OVERWORLD/Forest,/turf/grass/cliffgrass{tag = "icon-cliffgrass (EAST)"; icon_state = "cliffgrass"; dir = 4},/REGIONS/Region01)
-"aF" = (/obj/OVERWORLD/Forest,/turf/water,/REGIONS/Region01)
-"aG" = (/obj/OVERWORLD/Forest,/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/area)
+"aE" = (/obj/OVERWORLD/Forest{tag = "icon-2,8"; icon_state = "2,8"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (EAST)"; icon_state = "cliffgrass"; dir = 4},/REGIONS/Region01)
+"aF" = (/obj/OVERWORLD/Forest{tag = "icon-0,8"; icon_state = "0,8"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/area)
+"aG" = (/obj/OVERWORLD/Forest{tag = "icon-2,7"; icon_state = "2,7"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (EAST)"; icon_state = "cliffgrass"; dir = 4},/REGIONS/Region01)
 "aH" = (/obj/OVERWORLD/Forest,/turf/grass,/area)
 "aI" = (/obj/OVERWORLD/Forest{tag = "icon-2,8"; icon_state = "2,8"},/turf/grass,/DESTINATIONS/Bridgecrest)
 "aJ" = (/obj/OVERWORLD/Forest{tag = "icon-0,8"; icon_state = "0,8"},/turf/grass,/DESTINATIONS/Bridgecrest)
 "aK" = (/obj/OVERWORLD/Forest{tag = "icon-2,8"; icon_state = "2,8"},/turf/grass,/area)
 "aL" = (/obj/OVERWORLD/Forest{tag = "icon-0,7"; icon_state = "0,7"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (NORTHWEST)"; icon_state = "cliffgrass"; dir = 9},/REGIONS/Region01)
 "aM" = (/obj/OVERWORLD/Forest{tag = "icon-1,7"; icon_state = "1,7"},/turf/grass,/REGIONS/Region01)
-"aN" = (/obj/OVERWORLD/Forest{tag = "icon-1,7"; icon_state = "1,7"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (EAST)"; icon_state = "cliffgrass"; dir = 4},/REGIONS/Region01)
-"aO" = (/obj/OVERWORLD/Forest{tag = "icon-1,7"; icon_state = "1,7"},/turf/water,/REGIONS/Region01)
-"aP" = (/obj/OVERWORLD/Forest{tag = "icon-1,7"; icon_state = "1,7"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/area)
+"aN" = (/obj/OVERWORLD/Forest{tag = "icon-0,7"; icon_state = "0,7"},/turf/grass/cliffgrass{tag = "icon-cliffgrass (WEST)"; icon_state = "cliffgrass"; dir = 8},/area)
+"aO" = (/NPC/Devon,/turf/grass,/area)
+"aP" = (/NPC/Rotht,/turf/grass,/area)
 "aQ" = (/obj/OVERWORLD/Forest{tag = "icon-1,7"; icon_state = "1,7"},/turf/grass,/area)
 "aR" = (/obj/OVERWORLD/Forest{tag = "icon-2,7"; icon_state = "2,7"},/turf/grass,/DESTINATIONS/Bridgecrest)
 "aS" = (/obj/OVERWORLD/Forest{tag = "icon-0,7"; icon_state = "0,7"},/turf/grass,/DESTINATIONS/Bridgecrest)
@@ -363,6 +363,7 @@
 "gY" = (/turf/sidewalk,/obj/Objects32/GuardRail,/turf/plazaedge{tag = "icon-plazaedge (NORTHWEST)"; icon_state = "plazaedge"; dir = 9},/area)
 "gZ" = (/turf/plazaground,/obj/Objects32/GuardRail,/turf/plazaedge{tag = "icon-plazaedge (NORTHWEST)"; icon_state = "plazaedge"; dir = 9},/area)
 "ha" = (/turf/plazaground,/turf/plazaedge{tag = "icon-plazaedge (NORTHWEST)"; icon_state = "plazaedge"; dir = 9},/obj/Objects32/GuardRail,/obj/Objects32/GuardRail{tag = "icon-guardrail (EAST)"; icon_state = "guardrail"; dir = 4},/turf/plazaedge,/area)
+"hb" = (/turf/plazaground,/NPC/Darcy,/turf/plazaedge{tag = "icon-plazaedge (NORTHEAST)"; icon_state = "plazaedge"; dir = 5},/area)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -406,9 +407,9 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahahahahahaiagag
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajajajajajaialalalalalagagadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamamamaiagagagagagagagagadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabananaoamaiagagagagagagalalagadapaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaqarasasatauaravawaxayavavasasasavazaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBaCaDaDaEaFaGaHaIaxaJaHaHaDaDaDaDaHaKacadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamaLaMaMaMaNaOaPaQaRaxaSaQaQaMaMaMaMaMaTalagacacadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaqarasasatamauavawaxayavavasasasavazaAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaBaCaDaDaEamaFaHaIaxaJaHaHaDaDaDaDaHaKacadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamaLaMaMaMaGamaNaQaRaxaSaQaQaMaMaMaMaMaTalagacacadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamaUalalalaVaWaiagaXaxaxagagalalalalalalalalalagagacacacadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamaYaZaZaZbaamaeafafafagagagalalalalalalalalalalalalagagagacacadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbcbbbbbbbbaUalalalalalalalalalalalalalalalalalalagagadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -1043,7 +1044,7 @@ agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagagageGagagagagagagagagagagagagagagagagakaaaaaaaaaiesagagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagagexeyeyezesesagagagagesagagagagagagagagbeahaaaaaaaaaaaaaaaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaeHagagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagesagexeyeyezagagagagesagagagagesagagesagakahajaaaaaaaaaaaaaaaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagesagagagagagagagagagakaaaaaaaaaiesagesagesagageIeJeJeJeJeJeKagageLeMeMeMeMeMeNagageOePePeQagagagagagagagagagagagagagagagexeyeyezagesagagagagagagesagagagagagakajaaaaaaaaaaaaaaaaaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
-agagagagagagakagagagagagagesagagagagagagagagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaeHagagagagagageReSeJeJeTeUeVeWeReReXeMeMeYeZfafbfceRfdfeePffeRagagagagagagagagagagagagagagexeyeyezagagagagagagagagagagagagagagakaaaaaaaaaaaaaaaaaaaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
+agagagagagagakagagagagagagesagagagagagagagagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaeHagagagagagageReSeJeJeTeUeVeWeReReXeMeMeYeZfafbfceRfdfeePffeRagagagagagagaOagagagagaPagagexeyeyezagagagagagagagagagagagagagagakaaaaaaaaaaaaaaaaaaaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagfgagagagagagakaaaaaaaaaiagesagagagagfYeSeJeJfifjfkflgagbeXeMeMfofjfkflgagbfdePePfpgpageueveveveveveveveveveveveveyeyeyezagesagagagagesagagagagagagagagacacacacacacacacacaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagfrfsfgagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaeHagagagagagaggqfufvfwfxfyfzfAfBfCfDfvfwfEfyfzfAfBfCfFfvfwfGgragexeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyezagagagagagagagagagagagagagagagagagagagagagagagagaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagfgagagagagagagakaaaaaaaaeHagagagagagaggqfIfJfKfLfMfNfNfOfCfIfJfKfLfMfNfNfOfCfIfJfKfLgragexeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyezagagagagagagagagagagagagagagagagagagagagagagagagaiagagagagagagagagagagagagfgagagagagagagagagagagagagagagag
@@ -1060,7 +1061,7 @@ agagagagagagakagagagagagagagagagagagagagagagagagagagagafafafafafafafafafafafafaf
 agagagagagagakahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaheAeAeAeAahahahahahahahgxgygygygygzgAgygygygygygygygygygygzgAgygygygygBagexeyeyezfCgCgDgEgugugDgFfBfTfCgCgDgEgugugDgFfBagagagagagagagagagagagagagagagagagagaiagfgagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahbdbdbdbdahahahahahahahgGgHgHgHgHgzgAgHgHgHgHgHgHgHgHgHgHgzgAgHgHgHgHgIagexeyeyezfCgJgugvgKgvgugLfBfTfCgJgugvgKgvgugLfBagagagagagagagagagagagesagagagagagagaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaaiagagagagagaggMgMgMgMgMgNgOgMgMgMgMgMgMgMgMgMgMgNgOgMgMgMgMgMagexeyeyezfXfNfNfNfNfNfNfNfOfTfXfNfNfNfNfNfNfNfOagagagagagagagagagagagagagagagagagagaiagagagagagagagagagagesagagagagagagagagagagagagagagagagag
-agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaaigPeveveveveveveveveveveveveveveveveveveveveveveveveveveveveveveyeyeyeyevevevevevevevevevevevevevevevevevevevevevevevevewagagagagagagagagagagagagaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
+agagagagagagakagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagagakaaaaaaaaaigPevevevevevevevevevevevevevevevevevevevevevevevevhbeveveveveveyeyeyeyevevevevevevevevevevevevevevevevevevevevevevevevewagagagagagagagagagagagagaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagfZagagagagagagaggQagagagaggQagagagfZagagagfZagakaaaaaaaaaiexeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyezagagagagagagagagagagagagaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagagagagagagagagagaggQaggQgQagagaggQagagagagagagagagagagakaaaaaaaaaiexeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyezagagagageGagagagagagagagaiagagagagagagagagagagagagagagagagagagagagagagagagagagagag
 agagagagagagakagagagagagagagagagfZagagagagagagagagagagagagagagagagagagagagagagagagagagakgRgRgRgRaiexeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyezagagagagagagagagagagagagaiagagagagagagagagagagagagagesagagagagagagagagagagagagagag

@@ -32,6 +32,8 @@ mob/var
 
 // Make objects move 8 pixels per tick when walking
 
+
+
 mob
 	var
 		Recipe_Selected = null
@@ -40,8 +42,10 @@ mob
 		ANSWER="NO"
 		CLASS2 = "NONE"
 		ENEMY_NUMBER=0
+		currentMerchant=null
 		IN_BATTLE=0
 		IN_DUEL=0
+		IN_STORE=0
 		IN_SAFE
 		Equipping = 1
 		overloc=null
@@ -71,9 +75,11 @@ mob
 		lastz=z
 	step_size = 8
 	Login()
+		..()
+		OnlinePlayers+=src
 	//	Load()
 	//	src.see_invisible=4
-		src<<realm
+
 		new/CHAT/LINE_1(client)
 		new/CHAT/LINE_2(client)
 		new/CHAT/LINE_3(client)
@@ -86,7 +92,7 @@ mob
 
 		winset(src, "default.map1", "zoom=2")
 		for(var/mob/M in world)
-			if(M.client)
+			if(M.client && M != src) //only show this message to everyone else not yourself
 				M.Info("[src] has entered the realm..","black")
 	//	Info("[Region01.len] monsters left")
 		spawn(12)
@@ -95,6 +101,12 @@ mob
 				animate(C2, transform = matrix()*-1, time = 4)
 				spawn(1.4)
 					del(C2)
+		if(OnlinePlayers.len==1) //if host load world save
+			WorldLoad()
+			Info("World Save Loaded...","black")
+		var/obj/Time/T=GrabHolder("Time")
+		if(!isnull(T))
+			T.Apply(src)
 		Load()
 		spawn(1)
 			if(fexists("Savefiles/[src.key].sav"))
@@ -137,8 +149,17 @@ mob
 					src.lastz=src.z
 					src.Save()
 					src.AutoSave()
+		if(z==1)
+			src<<realm
+		if(z==5)
+			src<<rockbott
 
-
+	Logout()//removed on logout.
+		var/obj/Time/T=GrabHolder("Time")
+		if(!isnull(T))
+			src.client.screen-=T
+			src.client.screen-=T.Weather
+		..()//continue deletion
 	//	Message("[Region01.len]",10,"bottom")
 		//Battle_Start(enemy="SQUID",enemy_count=1)
 

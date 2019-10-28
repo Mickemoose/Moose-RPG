@@ -35,11 +35,23 @@ ITEMS
 		CHARACTER_LOCK = null
 		FRAME = null
 		canStack =1
+		price=0
 	DblClick()
-		if(usr.IN_MENU)
+
+		if(usr.IN_MENU&&usr.IN_STORE==0)
 			usr.ITEM_INMENU=src
 			usr.PartyCheckItem()
 			return
+	/*	if(usr.IN_STORE)
+			usr.moneys+=src.price
+			usr<<shop
+			usr.itemDrop(src)
+			usr.StoreUpdate(usr.currentMerchant) */
+
+
+
+
+
 	proc
 		ItemMenuUse(Party_Members/target)
 			..()
@@ -64,6 +76,7 @@ ITEMS
 
 
 	Potion
+		price=25
 		icon='Items/teenies.dmi'
 		icon_state="potion"
 		ItemMenuUse(Party_Members/target)
@@ -127,6 +140,7 @@ ITEMS
 					del src
 	Hi_Potion
 		icon='Items/teenies.dmi'
+		price=150
 		icon_state="hipotion"
 		ItemMenuUse(Party_Members/target)
 			if(!target.dead)
@@ -190,6 +204,7 @@ ITEMS
 	Max_Potion
 		icon='Items/teenies.dmi'
 		icon_state="maxpotion"
+		price=500
 		ItemMenuUse(Party_Members/target)
 			if(!target.dead)
 				if(target.HEALTH<target.MAX_HEALTH)
@@ -251,6 +266,7 @@ ITEMS
 	Max_Ether
 		icon='Items/teenies.dmi'
 		icon_state="maxether"
+		price=300
 		ItemMenuUse(Party_Members/target)
 			if(!target.dead)
 				if(target.MAGIC<target.MAX_MAGIC)
@@ -312,6 +328,7 @@ ITEMS
 	Max_Elixir
 		icon='Items/teenies.dmi'
 		icon_state="maxelixir"
+		price=1000
 		ItemMenuUse(Party_Members/target)
 			if(!target.dead)
 				if(target.MAGIC<target.MAX_MAGIC||target.HEALTH<target.MAX_HEALTH)
@@ -379,6 +396,7 @@ ITEMS
 	Ether
 		icon='Items/teenies.dmi'
 		icon_state="ether"
+		price=25
 		ItemMenuUse(Party_Members/target)
 			if(!target.dead)
 				if(target.MAGIC<target.MAX_MAGIC)
@@ -441,6 +459,7 @@ ITEMS
 	Elixir
 		icon='Items/teenies.dmi'
 		icon_state="elixir"
+		price=250
 		ItemMenuUse(Party_Members/target)
 			if(!target.dead)
 				if(target.HEALTH<target.MAX_HEALTH||target.MAGIC<target.MAX_MAGIC)
@@ -514,6 +533,8 @@ ITEMS
 	Phoenix_Feather
 		icon='Items/teenies.dmi'
 		icon_state="phoenix"
+		price=300
+
 		ItemMenuUse(Party_Members/target)
 			if(target.dead)
 				target.dead=0

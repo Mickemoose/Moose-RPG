@@ -56,6 +56,7 @@ mob
 				for(var/Party_Members/P in src.Party)
 					P.IN_BATTLE=0
 					P.timer=0
+					P.stone=0
 					src.Alives.Remove(P)
 					P.overlays-=/obj/ARROW
 					P.overlays-=/obj/CIRCLE
@@ -142,6 +143,7 @@ mob
 		//	Message("VICT",30,"top")
 			src.Info("The Battle is won!")
 			spawn(6)
+				fade.Map(src, 255, 15, 8)
 				for(var/obj/INFOBOX/C2 in src.client.screen)
 					del(C2)
 				src.Info("[src.GOLD_GAINED] money gained!")
@@ -200,6 +202,7 @@ mob
 								P.icon_state="Stance"
 								P.loc=src.contents
 						spawn(60)
+							fade.Map(src, 0, 10, 8)
 							for(var/obj/INFOBOX/C2 in src.client.screen)
 								del(C2)
 							src<<sound(null)

@@ -53,6 +53,14 @@ EQUIPMENT
 			ELEMENT = "SLIME"
 			icon='Equipment/Weapon/SlimeSword.dmi'
 			WEIGHT=6
+		Acid_Cutter
+			pixel_x=-8
+			pixel_y=-6
+			TRUE_NAME="Acid Cutter"
+			STRENGTH= 14
+			ELEMENT = "POISON"
+			icon='Equipment/Weapon/SaibaSword.dmi'
+			WEIGHT=6
 		Sacred_Blade
 			pixel_x=-8
 			pixel_y=-6
@@ -118,6 +126,7 @@ EQUIPMENT
 						P.weapon_overlay=src.icon
 						P.overlays+=P.weapon_overlay
 						usr.EquipUpdate()
+						usr.Save()
 						return
 					else if(P.WEAPON_SLOT=="[TRUE_NAME]")
 						for(var/EQUIPMENT/WEAPONS/W in usr.Equipment)
@@ -137,6 +146,7 @@ EQUIPMENT
 						P.overlays-=P.weapon_overlay
 						P.WEAPON_SLOT="NONE"
 						usr.EquipUpdate()
+						usr.Save()
 						return
 
 
@@ -178,6 +188,7 @@ EQUIPMENT
 							P.overlays+=P.mask_overlay
 							P.ARMOR_WEIGHT+=WEIGHT
 							usr.EquipUpdate()
+							usr.Save()
 							return
 						else if(P.MASK_SLOT=="[TRUE_NAME]")
 							for(var/EQUIPMENT/ARMOR/W in usr.Equipment)
@@ -197,6 +208,7 @@ EQUIPMENT
 							P.overlays-=P.mask_overlay
 							P.MASK_SLOT="NONE"
 							usr.EquipUpdate()
+							usr.Save()
 							return
 		HEAD
 			layer=9
@@ -241,6 +253,13 @@ EQUIPMENT
 				icon='Equipment/Head/PrazonHelmet.dmi'
 				POISON_RESIST=4
 				WEIGHT=4
+			Saiba_Helmet
+				DEFENSE=8
+				HAIR_REMOVAL=1
+				TRUE_NAME="Saiba Helmet"
+				icon='Equipment/Sets/Saiba/Helm.dmi'
+				POISON_RESIST=10
+				WEIGHT=5
 			Metool_Helmet
 				DEFENSE=10
 				HAIR_REMOVAL=1
@@ -293,6 +312,7 @@ EQUIPMENT
 							P.ARMOR_WEIGHT+=WEIGHT
 							P.overlays+=P.head_overlay
 							usr.EquipUpdate()
+							usr.Save()
 							return
 						else if(P.HEAD_SLOT=="[TRUE_NAME]")
 							if(HAIR_REMOVAL)
@@ -313,6 +333,7 @@ EQUIPMENT
 							P.overlays-=P.head_overlay
 							P.HEAD_SLOT="NONE"
 							usr.EquipUpdate()
+							usr.Save()
 							return
 		OUTFIT
 			layer=6
@@ -420,6 +441,7 @@ EQUIPMENT
 							P.outfit_overlay=src.icon
 							P.overlays+=P.outfit_overlay
 							usr.EquipUpdate()
+							usr.Save()
 							return
 						else if(P.OUTFIT_SLOT=="[TRUE_NAME]")
 							for(var/EQUIPMENT/ARMOR/W in usr.Equipment)
@@ -438,5 +460,6 @@ EQUIPMENT
 							P.overlays-=P.outfit_overlay
 							P.OUTFIT_SLOT="NONE"
 							usr.EquipUpdate()
+							usr.Save()
 							return
 			//LAYERS = Outfit=6 Mask=7  Head=9 Hair=8

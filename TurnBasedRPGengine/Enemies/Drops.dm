@@ -81,6 +81,14 @@ mob
 						for(var/obj/INFOBOX/C2 in client.screen)
 							del(C2)
 			if(enemy.name=="Saibamen")
+				var/T3=/RECIPES/Acid_Cutter
+				var/RECIPES/O = locate(T3) in src.Recipes
+				if(isnull(O))
+					src.Recipes.Add(new T3)
+				var/T2=/RECIPES/Saiba_Helmet
+				var/RECIPES/O2 = locate(T2) in src.Recipes
+				if(isnull(O2))
+					src.Recipes.Add(new T2)
 				if(prob(25))
 					materialAdd(new /MATERIALS/SAIBAMEN/ACID)
 					Info("Acid Dropped!")

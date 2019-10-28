@@ -8,6 +8,9 @@ mob
 	verb
 		ExitGame()
 			set hidden=1
+			usr.Save()
+		//	usr.WorldSave()
+			sleep(5)
 			winset(usr, null, "command=.quit")
 		ToggleFullscreen()
 			set hidden=1

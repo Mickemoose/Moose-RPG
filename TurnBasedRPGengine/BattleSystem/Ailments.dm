@@ -89,29 +89,39 @@ Party_Members
 				Slime()
 
 		Stone()
-			ailment_amount-=1
-			if(status_flash==0)
-				status_flash =1
-				animate(src, color=rgb(200,200,200), time = 10)
-			if(status_flash==1)
-				status_flash =0
-				animate(src, color=rgb(255,255,255), time = 10)
-			if(ailment_amount<=0)
-				animate(src, color=rgb(200,200,200), time = 10)
-				for(var/mob/M in world)
-					if(src in M.Alives)
-						M.HPUpdate()
-						stone=1
-						if(M.TURN==src)
-							if(attacking==1)
-								attacking=0
-								return
-							else
-								M.Turn_End(src)
-						M.HPUpdate()
-						M.StatUpdate()
-			spawn(20)
-				Stone()
+			if(ailment_amount>0)
+				ailment_amount-=pick(1,2,3,4)
+				if(status_flash==0)
+					status_flash =1
+					animate(src, color=rgb(150,150,150), time = 10)
+				if(status_flash==1)
+					status_flash =0
+					animate(src, color=rgb(255,255,255), time = 10)
+				if(ailment_amount<=0)
+					animate(src, color=rgb(80,80,80), time = 10)
+					for(var/mob/M in world)
+						if(src in M.Party)
+							M.Info("[name] has turned to stone!","black")
+							src<<dead_sound
+							spawn(14)
+								for(var/obj/INFOBOX/C2 in M.client.screen)
+									del(C2)
+					for(var/mob/M in world)
+						if(src in M.Alives)
+							M.HPUpdate()
+							stone=1
+							if(M.TURN==src)
+								if(attacking==1)
+									attacking=0
+									return
+								else
+									M.Turn_End(src)
+							M.Alives.Remove(src)
+							M.Wait_List.Remove(src)
+							M.HPUpdate()
+							M.StatUpdate()
+				spawn(20)
+					Stone()
 
 		Poison()
 	//		while(ailment_amount)

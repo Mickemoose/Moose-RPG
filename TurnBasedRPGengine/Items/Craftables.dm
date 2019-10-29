@@ -604,6 +604,139 @@ mob
 							del(E)
 
 				Equipment.Add(new/EQUIPMENT/ARMOR/HEAD/Saiba_Helmet)
+			if(usr.Recipe_Selected=="Metool Helmet")
+				for(num=0, num<6, num++)
+					for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<2, num++)
+					for(var/MATERIALS/METOOL/HELM/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/METOOL/ROD/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/ARMOR/HEAD/Metool_Helmet)
+			if(usr.Recipe_Selected=="Metool Armor")
+				for(num=0, num<8, num++)
+					for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<4, num++)
+					for(var/MATERIALS/METOOL/HELM/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<2, num++)
+					for(var/MATERIALS/METOOL/ROD/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/ARMOR/OUTFIT/Metool_Armor)
+			if(usr.Recipe_Selected=="Wrench Tooler")
+				for(num=0, num<6, num++)
+					for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<4, num++)
+					for(var/MATERIALS/METOOL/HELM/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				for(num=0, num<1, num++)
+					for(var/MATERIALS/METOOL/ROD/E in usr.Materials)
+						if(E.canStack && E.contents.len)
+							var/MATERIALS/theItem=pick(E.contents)
+							theItem.loc=usr.loc
+							del(theItem)
+							if(E.contents.len)
+								E.suffix="x[E.contents.len+1]"
+							else
+								E.suffix="x1"
+						else
+							E.loc=usr.loc
+							del(E)
+
+				Equipment.Add(new/EQUIPMENT/WEAPONS/Wrench_Tooler)
+
 
 
 RECIPES
@@ -913,3 +1046,72 @@ RECIPES
 									for(var/MATERIALS/SAIBAMEN/ACID/E4 in usr.Materials)
 										if(E4.contents.len+1>=1)
 											winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Wrench_Tooler
+		icon_state="weapon"
+		DisplayIcon='Equipment/Weapon/WrenchTooler.dmi'
+		Ingredient_1 ="/6 Wiley Parts"
+		Ingredient_2 ="/4 Hard Hats"
+		Ingredient_3 ="/1 Nuclear Rod"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/METOOL/HELM/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			for(var/MATERIALS/METOOL/ROD/E in usr.Materials)
+				winset(usr,"CRAFT.In3","text='[E.suffix][src.Ingredient_3]'")
+			winset(usr,"CRAFT.In4","text=''")
+			for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+				if(E.contents.len+1>=6)
+					for(var/MATERIALS/METOOL/HELM/E2 in usr.Materials)
+						if(E2.contents.len+1>=4)
+							for(var/MATERIALS/METOOL/ROD/E3 in usr.Materials)
+								if(E3.contents.len+1>=1)
+									winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Metool_Helmet
+		icon_state="helm"
+		DisplayIcon='Equipment/Head/MetoolHelm.dmi'
+		Ingredient_1 ="/6 Wiley Parts"
+		Ingredient_2 ="/2 Hard Hats"
+		Ingredient_3 ="/1 Nuclear Rod"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/METOOL/HELM/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			for(var/MATERIALS/METOOL/ROD/E in usr.Materials)
+				winset(usr,"CRAFT.In3","text='[E.suffix][src.Ingredient_3]'")
+			winset(usr,"CRAFT.In4","text=''")
+			for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+				if(E.contents.len+1>=6)
+					for(var/MATERIALS/METOOL/HELM/E2 in usr.Materials)
+						if(E2.contents.len+1>=2)
+							for(var/MATERIALS/METOOL/ROD/E3 in usr.Materials)
+								if(E3.contents.len+1>=1)
+									winset(usr,"CRAFT.CraftButton","is-visible=true")
+	Metool_Armor
+		icon_state="outfit"
+		DisplayIcon='Equipment/Outfit/MetoolArmor.dmi'
+		Ingredient_1 ="/8 Wiley Parts"
+		Ingredient_2 ="/4 Hard Hats"
+		Ingredient_3 ="/2 Nuclear Rod"
+		Click()
+			..()
+			usr << output("<BIG>\icon [src.DisplayIcon]</BIG>", "CRAFT.grid")
+			for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+				winset(usr,"CRAFT.In1","text='[E.suffix][src.Ingredient_1]'")
+			for(var/MATERIALS/METOOL/HELM/E in usr.Materials)
+				winset(usr,"CRAFT.In2","text='[E.suffix][src.Ingredient_2]'")
+			for(var/MATERIALS/METOOL/ROD/E in usr.Materials)
+				winset(usr,"CRAFT.In3","text='[E.suffix][src.Ingredient_3]'")
+			winset(usr,"CRAFT.In4","text=''")
+			for(var/MATERIALS/METOOL/GEAR/E in usr.Materials)
+				if(E.contents.len+1>=8)
+					for(var/MATERIALS/METOOL/HELM/E2 in usr.Materials)
+						if(E2.contents.len+1>=4)
+							for(var/MATERIALS/METOOL/ROD/E3 in usr.Materials)
+								if(E3.contents.len+1>=2)
+									winset(usr,"CRAFT.CraftButton","is-visible=true")

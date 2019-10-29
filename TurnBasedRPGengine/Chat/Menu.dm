@@ -412,8 +412,7 @@ mob
 					I2 = fcopy_rsc(I2)
 					winset(usr,"EQUIP.P4_BUTTON","is-visible=true;image='\ref[I2]'")
 			for(var/Party_Members/P in Party)
-				if(Equipping==P)
-
+				if(usr.Equipping==P)
 					winset(usr,"EQUIP.NAME","text='[P.name]")
 					winset(usr,"EQUIP.LEVEL","text='LEVEL: [P.LEVEL]")
 					winset(usr,"EQUIP.WEP","text='[P.WEAPON_SLOT]")
@@ -429,17 +428,15 @@ mob
 					winset(usr,"EQUIP.MP","text='MP:[P.MAGIC]/[P.MAX_MAGIC]")
 					var/I = 0
 					var/A = 0
-					for(var/EQUIPMENT/WEAPONS/O in src.Equipment)//Loop through all the items in the players contents
+					for(var/EQUIPMENT/WEAPONS/O in usr.Equipment)//Loop through all the items in the players contents
 						if(O.CHARACTER_LOCK=="[P.name]" || O.CHARACTER_LOCK==null)
-							if(O.EQUIPPED_BY == "[P.name]" || O.EQUIPPED_BY == null)
-								winset(src, "EQUIP.WEAPONS", "current-cell=1,[++I]")	//Add multiple cells horizontally for each obj
-								src << output(O, "EQUIP.WEAPONS")//Send the obj's in src.contents to the Grid
+							winset(src, "EQUIP.WEAPONS", "current-cell=1,[++I]")	//Add multiple cells horizontally for each obj
+							usr << output(O, "EQUIP.WEAPONS")//Send the obj's in src.contents to the Grid
 					winset(src,"EQUIP.WEAPONS", "cells=[I]")//Set the amount of cells to the amount within I
-					for(var/EQUIPMENT/ARMOR/R in src.Equipment)//Loop through all the items in the players contents
+					for(var/EQUIPMENT/ARMOR/R in usr.Equipment)//Loop through all the items in the players contents
 						if(R.CHARACTER_LOCK=="[P.name]" || R.CHARACTER_LOCK==null)
-							if(R.EQUIPPED_BY == "[P.name]" || R.EQUIPPED_BY == null)
-								winset(src, "EQUIP.ARMOR", "current-cell=1,[++A]")	//Add multiple cells horizontally for each obj
-								src << output(R, "EQUIP.ARMOR")//Send the obj's in src.contents to the Grid
+							winset(usr, "EQUIP.ARMOR", "current-cell=1,[++A]")	//Add multiple cells horizontally for each obj
+							usr << output(R, "EQUIP.ARMOR")//Send the obj's in src.contents to the Grid
 					winset(src,"EQUIP.ARMOR", "cells=[A]")//Set the amount of cells to the amount within I
 					return
 		EquipSet()
@@ -476,12 +473,12 @@ mob
 				winset(usr,"EQUIP.HEAD","text='HEAD: [P1.HEAD_SLOT]")
 				var/I = 0
 				var/A = 0
-				for(var/EQUIPMENT/WEAPONS/O in src.Equipment)//Loop through all the items in the players contents
+				for(var/EQUIPMENT/WEAPONS/O in usr.Equipment)//Loop through all the items in the players contents
 
 					winset(src, "EQUIP.WEAPONS", "current-cell=1,[++I]")	//Add multiple cells horizontally for each obj
 					src << output(O, "EQUIP.WEAPONS")//Send the obj's in src.contents to the Grid
 				winset(src,"EQUIP.WEAPONS", "cells=[I]")//Set the amount of cells to the amount within I
-				for(var/EQUIPMENT/ARMOR/R in src.Equipment)//Loop through all the items in the players contents
+				for(var/EQUIPMENT/ARMOR/R in usr.Equipment)//Loop through all the items in the players contents
 					winset(src, "EQUIP.ARMOR", "current-cell=1,[++A]")	//Add multiple cells horizontally for each obj
 					src << output(R, "EQUIP.ARMOR")//Send the obj's in src.contents to the Grid
 				winset(src,"EQUIP.ARMOR", "cells=[A]")//Set the amount of cells to the amount within I
@@ -490,21 +487,21 @@ mob
 				return
 		CraftingSetup()
 			var/I = 0
-			for(var/EQUIPMENT/ARMOR/R in src.Equipment)//Loop through all the items in the players contents
+			for(var/EQUIPMENT/ARMOR/R in usr.Equipment)//Loop through all the items in the players contents
 
 				winset(src, "CRAFTING.grid2", "current-cell=1,[++I]")	//Add multiple cells horizontally for each obj
-				src << output(R, "CRAFTING.grid2")//Send the obj's in src.contents to the Grid
-			winset(src,"CRAFTING.grid2", "cells=[I]")//Set the amount of cells to the amount within I
+				usr << output(R, "CRAFTING.grid2")//Send the obj's in src.contents to the Grid
+			winset(usr,"CRAFTING.grid2", "cells=[I]")//Set the amount of cells to the amount within I
 		MaterialCheck()
 			var/I = 1
 
 
 			winset(src, "MATERIALS.MATERIALS",{"cells="2x[src.Materials.len]""})	//Add multiple cells horizontally for each obj
-			for(var/MATERIALS/O in src.Materials)//Loop through all the items in the players contents
+			for(var/MATERIALS/O in usr.Materials)//Loop through all the items in the players contents
 
 
-				src << output(O, "MATERIALS.MATERIALS:1,[I]")//Send the obj's in src.contents to the Grid
-				src << output(O.suffix,"MATERIALS.MATERIALS:2,[I]")
+				usr << output(O, "MATERIALS.MATERIALS:1,[I]")//Send the obj's in src.contents to the Grid
+				usr << output(O.suffix,"MATERIALS.MATERIALS:2,[I]")
 				I++
 		ItemCheck()
 			var/I = 1

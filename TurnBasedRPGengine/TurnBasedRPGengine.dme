@@ -14,6 +14,7 @@
 
 // BEGIN_INCLUDE
 #include <darkcampainger\getflaticon\Get Flat Icon\Get Flat Icon.dme>
+#include <kaiochao\kaiocode\KaioCode.dme>
 #include "Dev Tree.dm"
 #include "SavingLoading.dm"
 #include "TurnBasedRPGengine.dm"
@@ -64,6 +65,11 @@
 #include "Overworld\Destinations.dm"
 #include "Overworld\Itens.dm"
 #include "Overworld\Turf.dm"
+#include "Overworld\Airships\Airships.dm"
+#include "Overworld\Airships\AtomForward.dm"
+#include "Overworld\Airships\CameraTurning.dm"
+#include "Overworld\Airships\PlayerLoop.dm"
+#include "Overworld\Airships\Velocity.dm"
 #include "Overworld\Houses\HouseTiles.dm"
 #include "Overworld\Houses\Furnish\System.dm"
 #include "Party\Partys.dm"

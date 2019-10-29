@@ -456,6 +456,19 @@ ITEMS
 				else
 					user.attacking=0
 					del src
+	Repel
+		icon='Items/teenies.dmi'
+		icon_state="repel"
+		price=500
+		DblClick()
+			if(usr.IN_MENU&&usr.IN_STORE==0)
+				if(usr.REPEL)
+					usr<<error
+				else
+					usr.itemDrop(src)
+					usr.ItemCheck()
+					usr.Repel()
+
 	Elixir
 		icon='Items/teenies.dmi'
 		icon_state="elixir"

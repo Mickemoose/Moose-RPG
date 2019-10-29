@@ -14,3 +14,5 @@ obj
 			icon='Hair/Hunter.dmi'
 		Laundry
 			icon='Hair/Laundry.dmi'
+		Matt
+			icon='Hair/Matt.dmi'

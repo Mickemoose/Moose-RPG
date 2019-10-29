@@ -24,7 +24,7 @@ EQUIPMENT
 			Blaster
 				pixel_x=-8
 				pixel_y=-6
-				TRUE_NAME="Hand Gun"
+				TRUE_NAME="Blaster"
 				STRENGTH= 6
 				ACCURACY= 3
 				icon='Equipment/Weapon/Gun/Blaster.dmi'
@@ -61,6 +61,14 @@ EQUIPMENT
 			ELEMENT = "POISON"
 			icon='Equipment/Weapon/SaibaSword.dmi'
 			WEIGHT=6
+		Wrench_Tooler
+			pixel_x=-8
+			pixel_y=-6
+			TRUE_NAME="Wrench Tooler"
+			STRENGTH= 16
+			ELEMENT = "FIRE"
+			icon='Equipment/Weapon/WrenchTooler.dmi'
+			WEIGHT=8
 		Sacred_Blade
 			pixel_x=-8
 			pixel_y=-6
@@ -78,6 +86,7 @@ EQUIPMENT
 			icon='Equipment/Weapon/GroudonHalberd.dmi'
 			WEIGHT=6
 		Boo_Axe
+			name="Spooky Chopper"
 			TRUE_NAME="Spooky Chopper"
 			pixel_x=-8
 			pixel_y=-6
@@ -109,45 +118,44 @@ EQUIPMENT
 				pixel_y=-6
 				STRENGTH=8
 				icon='Equipment/Weapon/SpawnFakeSword.dmi'
+
 		DblClick()
-			for(var/Party_Members/P in usr.Party)
-				if(usr.Equipping==P)
-					if(P.WEAPON_SLOT=="NONE" && src.EQUIPPED==0)
-						src.EQUIPPED=1
-						EQUIPPED_BY="[P.name]"
-						usr<<equip
-						P.WEAPON_SLOT="[src]"
-						name="[name][SUFFIX]"
-						P.STRENGTH_ADDED+=src.STRENGTH
-						P.ACC_ADDED+=src.ACCURACY
-						P.WEAPON_WEIGHT += WEIGHT
-						P.WEAPON_TYPE="[src.TYPE]"
-						P.ATTACK_ELEMENT="[src.ELEMENT]"
-						P.weapon_overlay=src.icon
-						P.overlays+=P.weapon_overlay
-						usr.EquipUpdate()
-						usr.Save()
-						return
-					else if(P.WEAPON_SLOT=="[TRUE_NAME]")
-						for(var/EQUIPMENT/WEAPONS/W in usr.Equipment)
-							if(W.name=="[name][SUFFIX]"&&W.EQUIPPED_BY=="[P.name]")
-								W.EQUIPPED=0
-								W.name="[W.TRUE_NAME]"
-								W.EQUIPPED_BY=null
-						usr<<equip
-						src.EQUIPPED=0
-						name="[TRUE_NAME]"
-						EQUIPPED_BY=null
-						P.STRENGTH_ADDED-=src.STRENGTH
-						P.ACC_ADDED-=src.ACCURACY
-						P.ATTACK_ELEMENT="NONE"
-						P.WEAPON_WEIGHT-=WEIGHT
-						P.WEAPON_TYPE="SWORD"
-						P.overlays-=P.weapon_overlay
-						P.WEAPON_SLOT="NONE"
-						usr.EquipUpdate()
-						usr.Save()
-						return
+			if(src in usr.Equipment)
+				for(var/Party_Members/P in usr.Party)
+					if(usr.Equipping==P)
+						if(P.WEAPON_SLOT==null && src.EQUIPPED==0 && src.EQUIPPED_BY==null)
+							src.EQUIPPED=1
+							EQUIPPED_BY="[P]"
+							usr<<equip
+							name="[name] - {E}:[P]"
+							P.WEAPON_SLOT="[src]"
+							//name="[name][SUFFIX]"
+							P.STRENGTH_ADDED+=src.STRENGTH
+							P.ACC_ADDED+=src.ACCURACY
+							P.WEAPON_WEIGHT += WEIGHT
+							P.WEAPON_TYPE="[src.TYPE]"
+							P.ATTACK_ELEMENT="[src.ELEMENT]"
+							P.weapon_overlay=src.icon
+							P.overlays+=P.weapon_overlay
+							usr.EquipUpdate()
+							usr.Save()
+							return
+						else
+							if(P.WEAPON_SLOT=="[src]" && src.EQUIPPED==1 && src.EQUIPPED_BY=="[P]")
+								usr<<equip
+								src.EQUIPPED=0
+								name="[TRUE_NAME]"
+								src.EQUIPPED_BY=null
+								P.STRENGTH_ADDED-=src.STRENGTH
+								P.ACC_ADDED-=src.ACCURACY
+								P.ATTACK_ELEMENT="NONE"
+								P.WEAPON_WEIGHT-=src.WEIGHT
+								P.WEAPON_TYPE="SWORD"
+								P.overlays-=P.weapon_overlay
+								P.WEAPON_SLOT=null
+								usr.EquipUpdate()
+								usr.Save()
+								return
 
 
 	ARMOR
@@ -174,12 +182,12 @@ EQUIPMENT
 			DblClick()
 				for(var/Party_Members/P in usr.Party)
 					if(usr.Equipping==P)
-						if(P.MASK_SLOT=="NONE" && src.EQUIPPED==0)
+						if(P.MASK_SLOT==null && src.EQUIPPED==0 && src.EQUIPPED_BY==null)
 							src.EQUIPPED=1
 							usr<<equip
+							name="[name] - {E}:[P]"
 							P.MASK_SLOT="[src]"
-							name="[name][SUFFIX]"
-							EQUIPPED_BY="[P.name]"
+							EQUIPPED_BY="[P]"
 							P.DEFENSE_ADDED+=src.DEFENSE
 							P.ACC_ADDED += src.ACCURACY
 							P.FIRERESIST_ADDED+=src.FIRE_RESIST
@@ -190,12 +198,7 @@ EQUIPMENT
 							usr.EquipUpdate()
 							usr.Save()
 							return
-						else if(P.MASK_SLOT=="[TRUE_NAME]")
-							for(var/EQUIPMENT/ARMOR/W in usr.Equipment)
-								if(W.name=="[name][SUFFIX]"&&W.EQUIPPED_BY=="[P.name]")
-									W.EQUIPPED=0
-									W.name="[W.TRUE_NAME]"
-									W.EQUIPPED_BY=null
+						if(P.MASK_SLOT=="[src]" && src.EQUIPPED==1 && src.EQUIPPED_BY=="[P]")
 							usr<<equip
 							src.EQUIPPED=0
 							name="[TRUE_NAME]"
@@ -206,7 +209,7 @@ EQUIPMENT
 							P.FIRERESIST_ADDED-=src.FIRE_RESIST
 							P.POIRESIST_ADDED-=src.POISON_RESIST
 							P.overlays-=P.mask_overlay
-							P.MASK_SLOT="NONE"
+							P.MASK_SLOT=null
 							usr.EquipUpdate()
 							usr.Save()
 							return
@@ -218,6 +221,13 @@ EQUIPMENT
 				TRUE_NAME="White Beanie"
 				icon='Equipment/Head/Beanie.dmi'
 				WEIGHT=2
+			Matts_Bandana
+				DEFENSE=4
+				HAIR_REMOVAL=0
+				TRUE_NAME="Matts Bandana"
+				icon='Equipment/Head/MattBandana.dmi'
+				WEIGHT=1
+				CHARACTER_LOCK="Matt"
 			Dragoon_Helmet
 				DEFENSE=6
 				HAIR_REMOVAL=1
@@ -261,11 +271,11 @@ EQUIPMENT
 				POISON_RESIST=10
 				WEIGHT=5
 			Metool_Helmet
-				DEFENSE=10
+				DEFENSE=12
 				HAIR_REMOVAL=1
 				TRUE_NAME="Metool Hard-Hat"
 				icon='Equipment/Head/MetoolHelm.dmi'
-				WEIGHT=4
+				WEIGHT=8
 			Mario_Cap
 				DEFENSE=6
 				HAIR_REMOVAL=1
@@ -297,14 +307,15 @@ EQUIPMENT
 			DblClick()
 				for(var/Party_Members/P in usr.Party)
 					if(usr.Equipping==P)
-						if(P.HEAD_SLOT=="NONE" && src.EQUIPPED==0)
+						if(P.HEAD_SLOT==null && src.EQUIPPED==0 && src.EQUIPPED_BY==null)
 							if(HAIR_REMOVAL)
 								P.overlays-=P.hair_overlay
 							src.EQUIPPED=1
 							usr<<equip
+							name="[name] - {E}:[P]"
 							P.HEAD_SLOT="[src]"
-							name="[name][SUFFIX]"
-							EQUIPPED_BY="[P.name]"
+							//name="[name] - {E}:[P]"
+							EQUIPPED_BY="[P]"
 							P.DEFENSE_ADDED+=src.DEFENSE
 							P.FIRERESIST_ADDED+=src.FIRE_RESIST
 							P.POIRESIST_ADDED+=src.POISON_RESIST
@@ -314,14 +325,9 @@ EQUIPMENT
 							usr.EquipUpdate()
 							usr.Save()
 							return
-						else if(P.HEAD_SLOT=="[TRUE_NAME]")
+						if(P.HEAD_SLOT=="[src]" && src.EQUIPPED==1 && src.EQUIPPED_BY=="[P]")
 							if(HAIR_REMOVAL)
 								P.overlays+=P.hair_overlay
-							for(var/EQUIPMENT/ARMOR/W in usr.Equipment)
-								if(W.name=="[name][SUFFIX]"&&W.EQUIPPED_BY=="[P.name]")
-									W.EQUIPPED=0
-									W.name="[W.TRUE_NAME]"
-									W.EQUIPPED_BY=null
 							usr<<equip
 							src.EQUIPPED=0
 							name="[TRUE_NAME]"
@@ -331,7 +337,7 @@ EQUIPMENT
 							P.ARMOR_WEIGHT-=WEIGHT
 							P.POIRESIST_ADDED-=src.POISON_RESIST
 							P.overlays-=P.head_overlay
-							P.HEAD_SLOT="NONE"
+							P.HEAD_SLOT=null
 							usr.EquipUpdate()
 							usr.Save()
 							return
@@ -369,6 +375,12 @@ EQUIPMENT
 				CHARACTER_LOCK = "Brendan"
 				icon='Equipment/Outfit/BrendanGarb.dmi'
 				WEIGHT=6
+			Matt_Garb
+				DEFENSE=4
+				TRUE_NAME="Matt Garb"
+				CHARACTER_LOCK = "Matt"
+				icon='Equipment/Outfit/MattGarb.dmi'
+				WEIGHT=4
 			Boo_Armor
 				DEFENSE=4
 				POISON_RESIST=3
@@ -393,6 +405,11 @@ EQUIPMENT
 				TRUE_NAME="Gamma Plating"
 				icon='Equipment/Outfit/GammaOutfit.dmi'
 				WEIGHT=10
+			Metool_Armor
+				DEFENSE=20
+				TRUE_NAME="Metool Armor"
+				icon='Equipment/Outfit/MetoolArmor.dmi'
+				WEIGHT=16
 			SOLDIER_First_Class_Outfit
 				DEFENSE=10
 				TRUE_NAME="SOLDIER First Class Outfit"
@@ -428,12 +445,13 @@ EQUIPMENT
 			DblClick()
 				for(var/Party_Members/P in usr.Party)
 					if(usr.Equipping==P)
-						if(P.OUTFIT_SLOT=="NONE" && src.EQUIPPED==0)
+						if(P.OUTFIT_SLOT==null && src.EQUIPPED==0 && src.EQUIPPED_BY==null)
 							src.EQUIPPED=1
 							usr<<equip
+							name="[name] - {E}:[P]"
 							P.OUTFIT_SLOT="[src]"
-							EQUIPPED_BY="[P.name]"
-							name="[name][SUFFIX]"
+							EQUIPPED_BY="[P]"
+							//name="[name][SUFFIX]"
 							P.DEFENSE_ADDED+=src.DEFENSE
 							P.FIRERESIST_ADDED+=src.FIRE_RESIST
 							P.ARMOR_WEIGHT+=WEIGHT
@@ -443,14 +461,9 @@ EQUIPMENT
 							usr.EquipUpdate()
 							usr.Save()
 							return
-						else if(P.OUTFIT_SLOT=="[TRUE_NAME]")
-							for(var/EQUIPMENT/ARMOR/W in usr.Equipment)
-								if(W.name=="[name][SUFFIX]"&&W.EQUIPPED_BY=="[P.name]")
-									W.EQUIPPED=0
-									W.name="[W.TRUE_NAME]"
-									W.EQUIPPED_BY=null
+						if(P.OUTFIT_SLOT=="[src]" && src.EQUIPPED==1 && src.EQUIPPED_BY=="[P]")
 							usr<<equip
-							src.EQUIPPED=0
+							EQUIPPED=0
 							name="[TRUE_NAME]"
 							EQUIPPED_BY=null
 							P.DEFENSE_ADDED-=src.DEFENSE
@@ -458,7 +471,7 @@ EQUIPMENT
 							P.POIRESIST_ADDED-=src.POISON_RESIST
 							P.ARMOR_WEIGHT-=WEIGHT
 							P.overlays-=P.outfit_overlay
-							P.OUTFIT_SLOT="NONE"
+							P.OUTFIT_SLOT=null
 							usr.EquipUpdate()
 							usr.Save()
 							return

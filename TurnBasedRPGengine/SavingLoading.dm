@@ -78,12 +78,9 @@ mob
 			F["KeyItems"] << src.KeyItems
 			F["Equipment"] << src.Equipment
 			F["Materials"] << src.Materials
-			for(var/EQUIPMENT/ARMOR/E in src.Equipment)
-				F["EQUIPPED"] << E.EQUIPPED
-				F["EQUIPPED_BY"] << E.EQUIPPED_BY
-			for(var/EQUIPMENT/WEAPONS/E in src.Equipment)
-				F["EQUIPPED"] << E.EQUIPPED
-				F["EQUIPPED_BY"] << E.EQUIPPED_BY
+			F["REPEL"] << src.REPEL
+			for(var/EQUIPMENT/E in src.Equipment)
+				F<<E
 			for(var/Party_Members/P in src.Reserves)
 				F["LEVEL"] << P.LEVEL
 				F["HEALTH"] << P.HEALTH
@@ -302,12 +299,9 @@ mob
 				F["KeyItems"] >> src.KeyItems
 				F["Equipment"] >> src.Equipment
 				F["Materials"] >> src.Materials
-				for(var/EQUIPMENT/ARMOR/E in src.Equipment)
-					F["EQUIPPED"] >> E.EQUIPPED
-					F["EQUIPPED_BY"] >> E.EQUIPPED_BY
-				for(var/EQUIPMENT/WEAPONS/E in src.Equipment)
-					F["EQUIPPED"] >> E.EQUIPPED
-					F["EQUIPPED_BY"] >> E.EQUIPPED_BY
+				F["REPEL"] >> src.REPEL
+				for(var/EQUIPMENT/E in src.Equipment)
+					F>>E
 				for(var/Party_Members/P in src.Reserves)
 					F["LEVEL"] >> P.LEVEL
 					F["HEALTH"] >> P.HEALTH
@@ -383,7 +377,6 @@ mob
 						F["P1-mask_overlay"] >> P.mask_overlay
 						F["P1-eye_overlay"] >> P.eye_overlay
 						F["P1-EYE_SLOT"] >> P.EYE_SLOT
-
 						F["P1-weapon_overlay"] >> P.weapon_overlay
 						F["P1-Party_Position"] >> P.Party_Position
 					if(P.Party_Position==2)

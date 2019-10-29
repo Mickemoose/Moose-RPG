@@ -1,6 +1,37 @@
 mob
 	proc
 		DropCheck(ENEMY/enemy)
+			if(enemy.name=="Metool")
+				var/T2=/RECIPES/Metool_Helmet
+				var/RECIPES/O3 = locate(T2) in src.Recipes
+				if(isnull(O3))
+					src.Recipes.Add(new T2)
+				var/T=/RECIPES/Metool_Armor
+				var/RECIPES/O2 = locate(T) in src.Recipes
+				if(isnull(O2))
+					src.Recipes.Add(new T)
+				var/T1=/RECIPES/Wrench_Tooler
+				var/RECIPES/O1 = locate(T1) in src.Recipes
+				if(isnull(O1))
+					src.Recipes.Add(new T1)
+				if(prob(50))
+					materialAdd(new /MATERIALS/METOOL/HELM)
+					Info("Hard Hat Dropped!")
+					spawn(10)
+						for(var/obj/INFOBOX/C2 in client.screen)
+							del(C2)
+				if(prob(30))
+					materialAdd(new /MATERIALS/METOOL/GEAR)
+					Info("Wiley Parts Dropped!")
+					spawn(10)
+						for(var/obj/INFOBOX/C2 in client.screen)
+							del(C2)
+				if(prob(25))
+					materialAdd(new /MATERIALS/METOOL/ROD)
+					Info("Nuclear Rod Dropped!")
+					spawn(10)
+						for(var/obj/INFOBOX/C2 in client.screen)
+							del(C2)
 			if(enemy.name=="Ho-Oh")
 				var/T2=/RECIPES/Sacred_Blade
 				var/RECIPES/O3 = locate(T2) in src.Recipes

@@ -58,7 +58,7 @@ Party_Members
 		dead = 0
 		OutOfBattle = 0
 
-		WEAPON_SLOT = "NONE"
+		WEAPON_SLOT = null
 		WEAPON_TYPE = "SWORD"
 		weapon_overlay=null
 		head_overlay=null
@@ -69,9 +69,9 @@ Party_Members
 
 		HAIR_SLOT = "NONE"
 		EYE_SLOT = "NONE"
-		HEAD_SLOT = "NONE"
-		MASK_SLOT="NONE"
-		OUTFIT_SLOT = "NONE"
+		HEAD_SLOT =  null
+		MASK_SLOT= null
+		OUTFIT_SLOT = null
 
 
 		EXTRA1=null
@@ -95,7 +95,7 @@ Party_Members
 		//battle calcs
 
 	DblClick()
-		//Start_Ailment("Poison")
+		//Start_Ailment("Petrify")
 		if(usr.managing==1)
 			if(src.Party_Position==0)
 				for(var/Party_Members/P1 in usr.Party)
@@ -203,6 +203,30 @@ Party_Members
 		New()
 			..()
 			dir=EAST
+	MATT
+		name = "Matt"
+		CLASS = "Fuckin Gangsta"
+		icon='Characters/BaseMaleWhite.dmi'
+		Party_Position= 0
+		timer_wait=4
+		timer_fill=10
+		STRENGTH=4
+		DEFENSE=3
+		pixel_y=-30
+		pixel_y=-25
+		portrait='Characters/Portraits/Brendan.dmi'
+		ready_sound = sound('SOUND FX/Matt/ready.wav',volume=40)
+		win_sound = sound('SOUND FX/Matt/win.wav',volume=40)
+		weak_sound = sound('SOUND FX/Matt/weak.wav',volume=40)
+		dead_sound = sound('SOUND FX/Matt/dead.wav',volume=40)
+		New()
+			..()
+			EYE_SLOT=/obj/EYES/Matt
+			eye_overlay=/obj/EYES/Matt
+			overlays+=eye_overlay
+			HAIR_SLOT=/obj/HAIR/Matt
+			hair_overlay='Hair/Matt.dmi'
+			overlays+=hair_overlay
 
 	BRENDAN
 		name = "Brendan"

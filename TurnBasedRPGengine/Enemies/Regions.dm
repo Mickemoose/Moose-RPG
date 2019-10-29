@@ -1,10 +1,11 @@
 mob
 	var
 		Region=00
+		REPEL=0
 	Move()
-		if(IN_BATTLE||IN_MENU)
+		if(IN_BATTLE||IN_MENU||IN_AIRSHIP)
 			return
-		if(IN_SAFE)
+		if(IN_SAFE||REPEL)
 			..()
 		else
 			..()
@@ -25,7 +26,9 @@ REGIONS
 	var
 		number = 0
 	Entered(mob/M)
-		M.Region=number
+		if(M.REPEL==0)
+			M.Region=number
+
 	RegionDEBUG
 		icon_state="01"
 		number = 69

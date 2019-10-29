@@ -88,6 +88,25 @@ MATERIALS
 			New()
 				icon+=rgb(255,174,201)
 	METOOL
+		GEAR
+			name="Wiley Parts"
+			icon_state="gear"
+			DESC = "Parts found in Dr. Wileys creations."
+			New()
+				icon+=rgb(255,200,15)
+		HELM
+			name="Hard Hat"
+			icon_state="hat"
+			DESC = "A construction hard hat"
+			New()
+				icon+=rgb(255,200,15)
+		ROD
+			name="Nuclear Rod"
+			icon_state="rod"
+			DESC = "A nuclear rod, mostly spent."
+			New()
+				icon+=rgb(255,200,15)
+
 	SAIBAMEN
 		BOOM
 			name="Volatile Mixture"

@@ -1,20 +1,20 @@
 // BEGIN_INTERNALS
 /*
 MAP_ZOOM: 1.000
-LAST_COMPILE_TIME: 1572249116
+LAST_COMPILE_TIME: 1572340597
+DIR: BattleSystem\Skills\HoOh BattleSystem\Skills\Lugia Characters Characters\Derek\Equipment Enemies Enemies\Bosses Equipment\Head Equipment\Outfit Equipment\Sets\Boo Equipment\Sets\HoOh Equipment\Sets\Lugia Equipment\Sets\Saiba Items Overworld Overworld\Airships Overworld\Characters External 
 PACKAGE_RSC_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_rsc.zip
-DIR: BattleSystem\Skills BattleSystem\Skills\HoOh BattleSystem\Skills\Lugia Characters Characters\Derek\Equipment Chat Chat\NPCs demo Enemies Enemies\Bosses Equipment\Head Equipment\Sets Equipment\Sets\Boo Equipment\Sets\HoOh Equipment\Sets\Saiba 
 AUTO_FILE_DIR: OFF
 PACKAGE_DMB_INFO: 
 MAP_ICON_TYPE: 0
 PACKAGE_DME_NAME: D:\Documents\Elements Backup\BYOND Stuff\BYOND Games\TurnBasedRPGengine\TurnBasedRPGengine_src.zip
 LAST_COMPILE_VERSION: 512.1488
-PACKAGE_TYPE: 0
 PACKAGE_DME_START: 
+PACKAGE_TYPE: 0
+WINDOW: Eyes\Energetic.dmi;Eyes\EyeStyles.dm;Hair\Hunter.dmi;Hair\Matt.dmi;Eyes\Matt.dmi;Characters\PartyMembers.dm;Characters\Hair.dm;Hair\Hairstyles.dm;Characters\BaseFemaleWhite.dmi;TurnBasedRPGengine.dm;Equipment\Head\PrazonHelmet.dmi;Equipment\Head\Beanie.dmi;Equipment\Head\MattBandana.dmi;Equipment\Head\DudeHat.dmi;Items\Equipment.dm;Characters\BaseMaleWhite.dmi;Equipment\Head\MarioCap.dmi;Equipment\Outfit\BeccaGarb.dmi;Equipment\Outfit\SmittyGarb.dmi;Equipment\Outfit\DecorativeUniform.dmi;Equipment\Outfit\MattGarb.dmi;Equipment\Outfit\LaundryGarb.dmi;Equipment\Head\LugiaHelmet.dmi;Overworld\Characters\Derek.dmi;Overworld\Characters\Matt.dmi;Overworld\Characters\Laundry.dmi;Overworld\Characters\Hunter.dmi;Overworld\Airships\BasicAirship.dmi;Overworld\Airships\AtomForward.dm;Overworld\Airships\Velocity.dm
 PACKAGE_DME_INFO: 
-WINDOW: Enemies\E-Skills.dm;OVERWORLD.dmm;demo\turf.dm;Dev Tree.dm;SavingLoading.dm;Characters\NPC.dmi;Chat\Portraits.dmi;Chat\NPCs\Box.dmi;Chat\NPCs\Darcy.dmi;Characters\NPC.dm;Chat\Chat.dm;country-platform-back.png
-FILE: OVERWORLD.dmm
-PACKAGE_DME_DEMO: 
+FILE: Overworld\Airships\Velocity.dm
 PACKAGE_DMB_NAME: C:\Users\DerekMY\Desktop\WolfPackRPGSandbox.zip
+PACKAGE_DME_DEMO: 
 */
 // END_INTERNALS
